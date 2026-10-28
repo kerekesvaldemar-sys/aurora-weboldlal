@@ -1,3 +1,25 @@
 # Static site: no build step, the repository root is published as is.
 [build]
   publish = "."
+
+# Old page addresses from the previous website (aurora.co.hu/hu/..., /de/, /en/, /cz/)
+# lead to the new home page instead of a "page not found" error.
+[[redirects]]
+  from = "/hu/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/de/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/en/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/cz/*"
+  to = "/"
+  status = 301
