@@ -127,7 +127,7 @@ body[data-view="home"] main{padding-top:0}
 .menu-btn[aria-expanded="true"] span:first-child{transform:translateY(3.75px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
 @media (max-width:360px){.head-in{gap:6px}.lang button{min-width:28px;padding:0 4px}.brand img{height:19px}}
-@media (min-width:1180px){
+@media (min-width:1260px){
   .brand{margin-right:12px}
   .mainnav{display:flex;flex:1;justify-content:center}
   .head-cta{display:inline-flex}
@@ -314,7 +314,7 @@ body[data-view="foglalas"] .actionbar,body.sheet-open .actionbar{display:none}
 .split .photo{--ar:3/2}
 .split-copy{display:grid;gap:18px;align-content:start}
 .split-copy h2{font-size:var(--fs-h2)}
-.split-copy p{color:var(--mute);max-width:46ch}
+.split-copy p:not(.eyebrow){color:var(--mute);max-width:46ch}
 @media (min-width:880px){.split{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
 
 /* About photo with a burgundy block */
@@ -581,6 +581,8 @@ textarea.input{min-height:110px;resize:vertical}
 .foot-grid{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
 .foot-brand img{width:min(230px,100%);height:auto}
 .foot-brand p{margin-top:16px;color:var(--night-mute);font-size:var(--fs-sm);max-width:30ch}
+.foot-social:empty{display:none}
+.foot-social a{color:var(--night-ink);text-decoration:underline;text-underline-offset:3px}
 .foot-col h2{font-family:var(--font-body);font-size:.6875rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--night-mute);margin-bottom:16px}
 .foot-col li{margin-bottom:8px}
 .foot-col a{color:var(--night-ink);text-decoration:none;font-size:var(--fs-sm)}
@@ -673,6 +675,28 @@ textarea.input{min-height:110px;resize:vertical}
 .grant-logo{width:100%;max-width:320px;height:auto;background:#fff}
 .grant .kv div{grid-template-columns:minmax(0,13rem) minmax(0,1fr)}
 @media (max-width:560px){.grant .kv div,.legal-sec .kv div{grid-template-columns:minmax(0,1fr);gap:2px}}
+.sights-wrap{padding-bottom:clamp(56px,8vw,104px)}
+.sights-group+.sights-group{margin-top:clamp(56px,7vw,96px)}
+.sights-group>h2{font-size:var(--fs-h2);margin-bottom:clamp(24px,3vw,40px);max-width:20ch}
+.sights{display:grid;gap:clamp(32px,3.5vw,44px) 40px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.sight{display:grid;gap:10px;align-content:start;padding-top:20px;border-top:1px solid var(--ink)}
+.sight-meta{font-size:var(--fs-xs);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy)}
+.sight h3{font-size:var(--fs-h3)}
+.sight p:not(.sight-meta){color:var(--mute)}
+.sight .tlink{justify-self:start;margin-top:4px;font-size:var(--fs-sm)}
+.sights-note{margin-top:clamp(40px,5vw,64px);font-size:var(--fs-sm);color:var(--mute);max-width:70ch}
+.sights-note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.cta-band .two{align-items:end}
+.cta-band h2{font-size:var(--fs-h2);margin:16px 0 0;max-width:16ch}
+.cta-band p:not(.eyebrow){color:var(--mute);max-width:46ch}
+.cta-band .btn-row{margin-top:24px}
+.steps{display:grid;gap:8px 40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));counter-reset:step}
+.step{display:grid;gap:10px;align-content:start;padding-top:20px;border-top:1px solid var(--ink)}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--font-display);font-size:1.6rem;line-height:1;color:var(--burgundy)}
+.steps .step p{color:var(--ink-2,var(--ink));font-size:var(--fs-base);max-width:32ch}
+.ev-actions{margin-top:clamp(36px,4.5vw,56px)}
+.ev-facts{margin-top:0}
+.ev-offer .ticks{margin-top:8px}
 .foot-grant{display:inline-flex;margin-top:28px;padding:8px 12px;background:#fff;border-radius:4px;line-height:0}
 .foot-grant img{height:46px;width:auto}
 </style>
@@ -689,7 +713,9 @@ textarea.input{min-height:110px;resize:vertical}
       <a href="#etlap" data-route="etlap" data-i18n="nav.menu">Étlap</a>
       <a href="#szallas" data-route="szallas" data-i18n="nav.stay">Szállás</a>
       <a href="#heti-menu" data-route="heti-menu" data-i18n="nav.weekly">Heti menü</a>
+      <a href="#rendezvenyek" data-route="rendezvenyek" data-i18n="nav.events">Rendezvények</a>
       <a href="#galeria" data-route="galeria" data-i18n="nav.gallery">Galéria</a>
+      <a href="#latnivalok" data-route="latnivalok" data-i18n="nav.sights">Látnivalók</a>
       <a href="#kapcsolat" data-route="kapcsolat" data-i18n="nav.contact">Kapcsolat</a>
     </nav>
     <div class="lang" role="group" aria-label="Nyelv választása" data-i18n-aria="lang.label">
@@ -711,7 +737,9 @@ textarea.input{min-height:110px;resize:vertical}
       <a href="#etlap" data-route="etlap" data-i18n="nav.menu">Étlap</a>
       <a href="#szallas" data-route="szallas" data-i18n="nav.stay">Szállás</a>
       <a href="#heti-menu" data-route="heti-menu" data-i18n="nav.weekly">Heti menü</a>
+      <a href="#rendezvenyek" data-route="rendezvenyek" data-i18n="nav.events">Rendezvények</a>
       <a href="#galeria" data-route="galeria" data-i18n="nav.gallery">Galéria</a>
+      <a href="#latnivalok" data-route="latnivalok" data-i18n="nav.sights">Látnivalók</a>
       <a href="#kapcsolat" data-route="kapcsolat" data-i18n="nav.contact">Kapcsolat</a>
     </nav>
     <div class="sheet-ctas">
@@ -748,7 +776,7 @@ textarea.input{min-height:110px;resize:vertical}
   <section class="section intro" aria-label="Rólunk" data-i18n-aria="about.eyebrow">
     <div class="wrap intro-in">
       <p class="eyebrow rv" data-i18n="about.eyebrow">Rólunk</p>
-      <p class="intro-text rv" data-i18n-em="intro.text">Családi ház a bükfürdői gyógyfürdő közelében. <em>A konyhában, a pultnál és az asztaloknál is mi magunk vagyunk ott.</em></p>
+      <p class="intro-text rv" data-i18n-em="intro.text">Családias vendéglátás Bükfürdőn, pár perc sétára a gyógyfürdőtől. <em>Friss alapanyagokból főzünk, és szívesen látjuk vendégül egy ebédre, egy vacsorára vagy néhány éjszakára.</em></p>
       <div class="intro-row rv">
         <ul class="intro-facts">
           <li data-bind="address">9740 Bükfürdő, Rózsa utca 1.</li>
@@ -859,6 +887,19 @@ textarea.input{min-height:110px;resize:vertical}
           <div class="btn-row"><a class="btn btn-primary" href="#foglalas" data-cta="table" data-i18n="cta.table">Asztalfoglalás</a></div>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="section night cta-band" aria-labelledby="evTeaserTitle">
+    <div class="wrap two">
+      <div class="rv">
+        <p class="eyebrow" data-i18n="ev.eyebrow">Rendezvények</p>
+        <h2 id="evTeaserTitle" data-i18n="ev.title">Ünnepeljen nálunk</h2>
+      </div>
+      <div class="rv">
+        <p data-i18n="ev.teaser">Születésnap, családi ünnep vagy céges vacsora: zártkörű rendezvényeket is vállalunk, az alkalomhoz összeállított menüvel.</p>
+        <div class="btn-row"><a class="btn btn-light" href="#rendezvenyek" data-i18n="ev.more">Rendezvények és ajánlatkérés</a></div>
+      </div>
     </div>
   </section>
 
@@ -1341,6 +1382,86 @@ textarea.input{min-height:110px;resize:vertical}
     </div>
   </section>
 </div>
+<!-- ======================= EVENTS (Rendezvények) ======================= -->
+<div class="view" data-view="rendezvenyek" hidden>
+  <section class="wrap page-head">
+    <p class="eyebrow" data-i18n="ev.eyebrow">Rendezvények</p>
+    <h1 data-i18n="ev.title">Ünnepeljen nálunk</h1>
+    <p class="lead" data-i18n="ev.lead">Születésnap, családi ünnep, céges vacsora vagy évzáró: az étteremben és jó időben a lombos teraszon zártkörű rendezvényeket is vállalunk, az alkalomhoz összeállított menüvel.</p>
+    <div class="btn-row page-ctas" data-render="evActions"></div>
+  </section>
+  <section class="wrap" aria-label="Alkalmak" data-i18n-aria="ev.occLabel">
+    <div class="facts ev-facts">
+      <div class="fact rv"><h3 data-i18n="ev.o1.t">Családi ünnepek</h3><p data-i18n="ev.o1.p">Születésnap, keresztelő, ballagás, évforduló.</p></div>
+      <div class="fact rv"><h3 data-i18n="ev.o2.t">Céges események</h3><p data-i18n="ev.o2.p">Csapatvacsora, évzáró, üzleti ebéd vagy vacsora.</p></div>
+      <div class="fact rv"><h3 data-i18n="ev.o3.t">Baráti összejövetelek</h3><p data-i18n="ev.o3.p">Osztálytalálkozó, baráti vacsora, kisebb társaságok.</p></div>
+    </div>
+  </section>
+  <section class="section ev-offer" aria-labelledby="evOfferTitle">
+    <div class="wrap split">
+      <figure class="photo rv-photo" data-img="events" data-ar="4:5" data-sizes="(min-width:880px) 55vw, 100vw"></figure>
+      <div class="split-copy rv">
+        <p class="eyebrow" data-i18n="ev.offerEyebrow">Amit kínálunk</p>
+        <h2 id="evOfferTitle" data-i18n="ev.offerTitle">Minden egy helyen</h2>
+        <ul class="ticks">
+          <li data-i18n="ev.f1">Az alkalomhoz igazított menü, a magyar konyha klasszikusaitól a grillételekig</li>
+          <li data-i18n="ev.f2">Terítés az étteremben, jó időben a lombos teraszon</li>
+          <li data-i18n="ev.f3">Szállás a vendégeknek ugyanabban a házban</li>
+          <li data-i18n="ev.f4">Ingyenes parkolás</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section band" aria-labelledby="evStepsTitle">
+    <div class="wrap">
+      <div class="sec-head rv"><div><p class="eyebrow" data-i18n="ev.stepsEyebrow">Ajánlatkérés</p><h2 id="evStepsTitle" data-i18n="ev.stepsTitle">Így kérhet ajánlatot</h2></div></div>
+      <ol class="steps">
+        <li class="step rv"><p data-i18n="ev.s1">Írja meg az alkalmat, a dátumot és a várható létszámot.</p></li>
+        <li class="step rv"><p data-i18n="ev.s2">Összeállítjuk a menüjavaslatot és az ajánlatot.</p></li>
+        <li class="step rv"><p data-i18n="ev.s3">Egyeztetjük a részleteket, a többit bízza ránk.</p></li>
+      </ol>
+      <div class="btn-row ev-actions" data-render="evActions"></div>
+      <p class="edit-hint" hidden><b>Szerkesztés:</b> a gombok a <code>SITE.contact</code> telefonszámát, e-mail címét és WhatsApp-számát használják. A szövegek az <code>ev.*</code> fordítási kulcsokban vannak.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ======================= THINGS TO DO (Látnivalók) ======================= -->
+<div class="view" data-view="latnivalok" hidden>
+  <section class="wrap page-head">
+    <p class="eyebrow" data-i18n="sg.eyebrow">Bük és környéke</p>
+    <h1 data-i18n="sg.title">Látnivalók a környéken</h1>
+    <p class="lead" data-i18n="sg.lead">Bükfürdő jó kiindulópont: a gyógyfürdő pár perc sétára van tőlünk, Kőszeg, Szombathely, Sárvár és Sopron pedig autóval könnyen elérhető.</p>
+  </section>
+  <section class="wrap sights-wrap" aria-label="Látnivalók" data-i18n-aria="nav.sights">
+    <div class="sights-group">
+      <h2 data-i18n="sg.town">Bükfürdőn és Bükön</h2>
+      <div class="sights" data-render="sightsTown"></div>
+    </div>
+    <div class="sights-group">
+      <h2 data-i18n="sg.trips">Kirándulások a környéken</h2>
+      <div class="sights" data-render="sightsTrips"></div>
+    </div>
+    <p class="sights-note"><span data-i18n="sg.note">A távolságok Bükfürdőtől értendők, kerekítve. Nyitvatartásért és aktuális programokért nézze meg a helyszínek honlapját, vagy kérdezzen tőlünk.</span> <a href="https://www.visitbuk.hu/" target="_blank" rel="noopener" data-i18n="sg.programs">Aktuális programok Bükön: visitbuk.hu</a></p>
+    <p class="edit-hint" hidden><b>Szerkesztés:</b> a látnivalók a <code>SITE.sights</code> listában vannak (név, rövid adat, leírás, weboldal), nyelvenként.</p>
+  </section>
+  <section class="section band cta-band" aria-labelledby="sgStayTitle">
+    <div class="wrap two">
+      <div class="rv">
+        <p class="eyebrow" data-i18n="stay.eyebrow">Panzió</p>
+        <h2 id="sgStayTitle" data-i18n="sg.stayTitle">Szálljon meg nálunk</h2>
+      </div>
+      <div class="rv">
+        <p data-i18n="sg.stayText">Napközben fürdő, kirándulás vagy golf, este vacsora nálunk, éjszakára pedig a szoba ugyanabban a házban.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#szallasfoglalas" data-cta="stay" data-i18n="cta.stay">Szállásfoglalás</a>
+          <a class="btn btn-line" href="#foglalas" data-cta="table" data-i18n="cta.table">Asztalfoglalás</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ======================= GRANTS (Pályázatok) ======================= -->
 <div class="view" data-view="palyazatok" hidden>
   <section class="wrap page-head">
@@ -1477,6 +1598,7 @@ textarea.input{min-height:110px;resize:vertical}
       <div class="foot-brand">
         <img src="data:image/webp;base64,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" width="468" height="131" alt="Aurora Étterem &amp; Panzió" loading="lazy">
         <p data-i18n="foot.tagline">Családi étterem és panzió Bükfürdőn.</p>
+        <p class="foot-social" data-render="footSocial"></p>
       </div>
       <div class="foot-col">
         <h2 data-i18n="foot.pages">Oldalak</h2>
@@ -1485,7 +1607,9 @@ textarea.input{min-height:110px;resize:vertical}
           <li><a href="#etlap" data-i18n="nav.menu">Étlap</a></li>
           <li><a href="#szallas" data-i18n="nav.stay">Szállás</a></li>
           <li><a href="#heti-menu" data-i18n="nav.weekly">Heti menü</a></li>
+          <li><a href="#rendezvenyek" data-i18n="nav.events">Rendezvények</a></li>
           <li><a href="#galeria" data-i18n="nav.gallery">Galéria</a></li>
+          <li><a href="#latnivalok" data-i18n="nav.sights">Látnivalók</a></li>
           <li><a href="#kapcsolat" data-i18n="nav.contact">Kapcsolat</a></li>
         </ul>
       </div>
@@ -1644,6 +1768,7 @@ const SITE = {
     stay2:           { src: "", alt: { hu: "Szoba", de: "Zimmer", cs: "Pokoj", en: "Room" } },
     stay3:           { src: "", alt: { hu: "Fürdőszoba", de: "Badezimmer", cs: "Koupelna", en: "Bathroom" } },
     stayBook:        { src: "", alt: { hu: "Szoba a panzióban", de: "Zimmer in der Pension", cs: "Pokoj v penzionu", en: "A room at the guesthouse" } },
+    events:          { src: "img/aurora-kreinbacher-pezsgo-1449.webp", srcset: "img/aurora-kreinbacher-pezsgo-800.webp 800w, img/aurora-kreinbacher-pezsgo-1449.webp 1449w", pos: "50% 40%", alt: { hu: "Kreinbacher pezsgő jégvödörben", de: "Kreinbacher Sekt im Eiskübel", cs: "Šumivé víno Kreinbacher v kbelíku s ledem", en: "Kreinbacher sparkling wine on ice" } },
     // Photo cards in the featured spot when there is no weekend offer. textPos = corner of the caption on the photo.
     menuCard:        { src: "img/aurora-halas-eloetel-1449.webp", srcset: "img/aurora-halas-eloetel-800.webp 800w, img/aurora-halas-eloetel-1449.webp 1449w", pos: "50% 64%", textPos: "top-left", alt: { hu: "", de: "", cs: "", en: "" } },
     bookCard:        { src: "img/aurora-sult-hus-galuska-941.webp", srcset: "img/aurora-sult-hus-galuska-800.webp 800w, img/aurora-sult-hus-galuska-941.webp 941w", pos: "50% 92%", textPos: "top-left", alt: { hu: "", de: "", cs: "", en: "" } }
@@ -1725,6 +1850,82 @@ const SITE = {
   // { date:"2026-10-01", title:{hu:"…",de:"…",cs:"…",en:"…"}, text:{hu:"…"}, image:{ src:"", alt:{hu:"…"} } }
   // The news section stays hidden while this list is empty.
   news: [],
+
+  // THINGS TO DO — the "Látnivalók" page. town = in Bük / Bükfürdő, trips = day trips.
+  // meta = the small line above the name (type, distance). url = official website (empty = no link).
+  // Facts checked against visitbuk.hu (Bük's official tourism site) and the venues' own websites, Oct 2026.
+  sights: {
+    town: [
+      { name: "Bükfürdő Thermal & Spa", url: "https://bukfurdo.hu/",
+        meta: { hu: "Gyógyfürdő · pár perc sétára", de: "Heilbad · wenige Gehminuten", cs: "Lázně · pár minut chůze", en: "Spa · a few minutes' walk" },
+        text: { hu: "A város gyógyfürdője minősített gyógyvízzel, gyógykezelésekkel és wellness-szolgáltatásokkal. Az aktuális nyitvatartást a fürdő honlapján találja.",
+                de: "Das Heilbad der Stadt mit anerkanntem Heilwasser, Kuranwendungen und Wellness. Aktuelle Öffnungszeiten finden Sie auf der Website des Bades.",
+                cs: "Městské lázně s uznanou léčivou vodou, léčebnými procedurami a wellness. Aktuální otevírací dobu najdete na webu lázní.",
+                en: "The town's medicinal spa, with certified thermal water, treatments and wellness. Check the spa's website for current opening hours." } },
+      { name: "Greenfield Golf", url: "https://greenfieldgolf.hu/",
+        meta: { hu: "Golfpálya · Bükfürdő", de: "Golfplatz · Bükfürdő", cs: "Golfové hřiště · Bükfürdő", en: "Golf course · Bükfürdő" },
+        text: { hu: "Magyarország első 18 lyukú bajnoki golfpályája, 1991 óta. Mintegy 100 hektáron, tavak és nyárfák között.",
+                de: "Ungarns erster 18-Loch-Meisterschaftsplatz, seit 1991. Rund 100 Hektar zwischen Seen und Pappeln.",
+                cs: "První 18jamkové mistrovské golfové hřiště v Maďarsku, otevřené od roku 1991. Zhruba 100 hektarů mezi jezery a topoly.",
+                en: "Hungary's first 18-hole championship golf course, open since 1991. Around 100 hectares of lakes and poplars." } },
+      { name: { hu: "Kristály-torony", de: "Kristallturm", cs: "Křišťálová věž", en: "Crystal Tower" }, url: "",
+        meta: { hu: "Kalandtorony · Bük", de: "Abenteuerturm · Bük", cs: "Dobrodružná věž · Bük", en: "Adventure tower · Bük" },
+        text: { hu: "17 méter magas kalandtorony több mint egy kilométeres kalandpályával, közel 200 méteres csúszópályával és kilátóterasszal 13 méter magasan.",
+                de: "17 Meter hoher Abenteuerturm mit über einem Kilometer Parcours, einer fast 200 Meter langen Seilrutsche und einer Aussichtsterrasse in 13 Metern Höhe.",
+                cs: "17 metrů vysoká věž s více než kilometrovou dobrodružnou trasou, téměř 200metrovou lanovou dráhou a vyhlídkovou terasou ve výšce 13 metrů.",
+                en: "A 17-metre adventure tower with over a kilometre of rope course, a zip line of almost 200 metres and a viewing terrace 13 metres up." } },
+      { name: "FunCity", url: "https://funcity.hu/",
+        meta: { hu: "Szórakoztatóközpont · Bükfürdő", de: "Freizeitzentrum · Bükfürdő", cs: "Zábavní centrum · Bükfürdő", en: "Entertainment centre · Bükfürdő" },
+        text: { hu: "Drift gokart, Forma–1- és jetpack-szimulátor, VR-élmények, interaktív terepasztal és mozi a Termál körúton.",
+                de: "Drift-Gokart, Formel-1- und Jetpack-Simulator, VR-Erlebnisse, eine interaktive Modelllandschaft und ein Kino am Termál körút.",
+                cs: "Driftovací motokáry, simulátor formule 1 a jetpacku, VR zážitky, interaktivní model krajiny a kino na Termál körút.",
+                en: "Drift go-karts, Formula 1 and jetpack simulators, VR experiences, an interactive model landscape and a cinema, on Termál körút." } },
+      { name: { hu: "Kerékpártúrák", de: "Radtouren", cs: "Cyklotrasy", en: "Cycling routes" }, url: "",
+        meta: { hu: "Kerékpár · Bükről indulva", de: "Rad · ab Bük", cs: "Kolo · z Büku", en: "Cycling · from Bük" },
+        text: { hu: "Bükről több kerékpáros útvonal indul, többek között Csepregre, a Répce mentén az ausztriai Locsmándig, és Kőszeg felé. Bükfürdőn elektromos és tandem kerékpár is bérelhető.",
+                de: "Mehrere Radrouten führen von Bük unter anderem nach Csepreg, entlang der Rabnitz bis Lutzmannsburg im Burgenland und Richtung Kőszeg. In Bükfürdő können Sie E-Bikes und Tandems leihen.",
+                cs: "Z Büku vede několik cyklotras, mimo jiné do Csepregu, podél řeky Répce až do rakouského Lutzmannsburgu a směrem na Kőszeg. V Bükfürdő si můžete půjčit elektrokolo i tandem.",
+                en: "Several cycle routes start in Bük, including to Csepreg, along the Répce river to Lutzmannsburg in Austria, and towards Kőszeg. E-bikes and tandems can be hired in Bükfürdő." } }
+    ],
+    trips: [
+      { name: { hu: "Kőszeg", de: "Kőszeg (Güns)", cs: "Kőszeg", en: "Kőszeg" }, url: "",
+        meta: { hu: "kb. 20 km", de: "ca. 20 km", cs: "cca 20 km", en: "approx. 20 km" },
+        text: { hu: "Középkori kisváros a Kőszegi-hegység lábánál: a Jurisics-vár, hangulatos óváros és tiszta hegyi levegő.",
+                de: "Mittelalterliches Städtchen am Fuß des Günser Gebirges: Burg Jurisics, eine stimmungsvolle Altstadt und frische Bergluft.",
+                cs: "Středověké městečko na úpatí Kőszegských vrchů: hrad Jurisics, malebné staré město a čistý horský vzduch.",
+                en: "A medieval town at the foot of the Kőszeg Hills: Jurisics Castle, a charming old town and fresh mountain air." } },
+      { name: { hu: "Írottkő Natúrpark", de: "Naturpark Geschriebenstein–Írottkő", cs: "Přírodní park Írottkő", en: "Írottkő Nature Park" }, url: "",
+        meta: { hu: "Kőszegi-hegység", de: "Günser Gebirge", cs: "Kőszegské vrchy", en: "Kőszeg Hills" },
+        text: { hu: "Erdei túraútvonalak az osztrák határ mentén. Az Írottkő a Dunántúl legmagasabb pontja, a csúcson álló kilátóból messzire ellátni.",
+                de: "Waldwanderwege entlang der österreichischen Grenze. Der Geschriebenstein ist der höchste Punkt Westungarns, vom Aussichtsturm auf dem Gipfel reicht der Blick weit.",
+                cs: "Lesní turistické trasy podél rakouských hranic. Írottkő je nejvyšší bod Zadunají a z rozhledny na vrcholu je daleký výhled.",
+                en: "Forest trails along the Austrian border. Írottkő is the highest point of Transdanubia, and the lookout tower on the summit has wide views." } },
+      { name: { hu: "Holdfény Liget Kalandpark", de: "Abenteuerpark Holdfény Liget", cs: "Dobrodružný park Holdfény Liget", en: "Holdfény Liget Adventure Park" }, url: "",
+        meta: { hu: "Gyöngyösfalu · kb. 20 perc autóval", de: "Gyöngyösfalu · ca. 20 Min. mit dem Auto", cs: "Gyöngyösfalu · cca 20 min autem", en: "Gyöngyösfalu · approx. 20 min by car" },
+        text: { hu: "Kötélpályák 3 éves kortól, erdei kisvasút, íjászat és óriáscsúszda a Kőszegi-hegység lábánál. Családoknak ideális program.",
+                de: "Seilgärten ab 3 Jahren, eine Waldbahn, Bogenschießen und eine Riesenrutsche am Fuß des Günser Gebirges. Ideal für Familien.",
+                cs: "Lanové dráhy pro děti od 3 let, lesní úzkokolejka, lukostřelba a obří skluzavka na úpatí Kőszegských vrchů. Ideální pro rodiny.",
+                en: "Rope courses from age 3, a forest narrow-gauge train, archery and a giant slide at the foot of the Kőszeg Hills. Ideal for families." } },
+      { name: "Szombathely", url: "",
+        meta: { hu: "kb. 30 km", de: "ca. 30 km", cs: "cca 30 km", en: "approx. 30 km" },
+        text: { hu: "Az ókori Savaria helyén épült, közel kétezer éves város. A Kámoni arborétum az ország egyik leggazdagabb örökzöld-gyűjteménye.",
+                de: "Eine fast 2000 Jahre alte Stadt auf den Resten des antiken Savaria. Das Arboretum Kámon zählt zu den reichsten Sammlungen immergrüner Gehölze in Ungarn.",
+                cs: "Téměř dva tisíce let staré město na místě antické Savarie. Arboretum Kámon patří k nejbohatším sbírkám stálezelených dřevin v Maďarsku.",
+                en: "A town of nearly 2,000 years, built on ancient Savaria. The Kámon Arboretum holds one of Hungary's richest collections of evergreens." } },
+      { name: "Sárvár", url: "",
+        meta: { hu: "Fürdőváros", de: "Kurstadt", cs: "Lázeňské město", en: "Spa town" },
+        text: { hu: "Fürdőváros a Rába partján, a Nádasdy-várral és a Sárvári Gyógyfürdővel.",
+                de: "Kurstadt an der Raab mit der Burg Nádasdy und dem Heilbad Sárvár.",
+                cs: "Lázeňské město na řece Rábě s hradem Nádasdy a lázněmi Sárvár.",
+                en: "A spa town on the Rába river, with Nádasdy Castle and the Sárvár thermal baths." } },
+      { name: { hu: "Sopron", de: "Sopron (Ödenburg)", cs: "Šoproň", en: "Sopron" }, url: "",
+        meta: { hu: "kb. 45 km", de: "ca. 45 km", cs: "cca 45 km", en: "approx. 45 km" },
+        text: { hu: "A „hűség városa”: középkori belváros a Tűztoronnyal, és a soproni borvidék, ahonnan a kékfrankosunk is érkezik.",
+                de: "Die „Stadt der Treue“: mittelalterliche Altstadt mit dem Feuerturm und das Weinbaugebiet Sopron, aus dem auch unser Blaufränkisch stammt.",
+                cs: "„Město věrnosti“: středověké centrum s Ohňovou věží a vinařská oblast Sopron, odkud pochází i naše Frankovka.",
+                en: "The 'Town of Loyalty': a medieval old town with the Firewatch Tower, and the Sopron wine region, where our Blaufränkisch comes from." } }
+    ]
+  },
 
   // GOOGLE REVIEWS — real reviews copied from the Google profile. They run across the home page.
   // name, rating (1–5), lang = language the guest wrote in, text = the guest's own words,
@@ -2025,10 +2226,31 @@ const I18N = {
   "u.guests": { one: "{n} fő", few: "{n} fő", many: "{n} fő" },
   "foot.tagline": "Családi étterem és panzió Bükfürdőn.", "foot.pages": "Oldalak", "foot.privacy": "Adatkezelés", "foot.imprint": "Impresszum",
   "foot.rights": "Minden jog fenntartva.", "foot.allergen": "Allergénekkel kapcsolatos információkért forduljon munkatársainkhoz.",
-  "intro.text": "Családi ház a bükfürdői gyógyfürdő közelében. *A konyhában, a pultnál és az asztaloknál is mi magunk vagyunk ott.*", "intro.parking": "Ingyenes parkolás", "team.eyebrow": "A csapat", "wkd.eyebrow": "Hétvégén", "wkd.head": "Hétvégén az Aurorában", "wkd.offer": "Hétvégi ajánlat", "wkd.wine": "A hétvége bora", "wkd.glass": "Pohár", "wkd.bottle": "Palack", "wkd.until": "Eddig érvényes: {d}", "week.over": "Ennek a hétnek a menüje lejárt. Az új heti menü hamarosan felkerül.", "week.from": "Érvényes ettől: {d}", "week.next": "Jövő héten", "menuCard.head": "Válasszon az étlapról", "menuCard.title": "Állandó étlapunk", "menuCard.text": "Levesek és pörköltek, grillételek, halak, saláták és desszertek.", "menuCard.cta": "Az étlap megtekintése", "bookCard.title": "Foglaljon asztalt", "bookCard.text": "Küldje el kérését WhatsAppon vagy telefonon, és visszaigazoljuk.", "ph.dishName": "Étel neve", "ph.wineName": "Bor neve", "ph.desc": "rövid leírás", "ph.winery": "pincészet · évjárat", "ph.offerPrice": "ár", "preview.note": "Előnézet: így jelenik meg a hétvégi ajánlat és a hétvége bora, amikor a heti menü lejár. A szövegeket, árakat és fotókat a SITE.weekend blokkban kell megadni.", "preview.link": "Hétvégi nézet (előnézet)", "fd.label": "A konyhánkból", "fd.title": "Kiemelt ételek", "menu.lead": "Levesek és pörköltek, grillételek, halak, saláták, desszertek – és mellettük borok, pálinkák, kávé.", "title.etlap": "Étlap",
+  "intro.text": "Családias vendéglátás Bükfürdőn, pár perc sétára a gyógyfürdőtől. *Friss alapanyagokból főzünk, és szívesen látjuk vendégül egy ebédre, egy vacsorára vagy néhány éjszakára.*", "intro.parking": "Ingyenes parkolás", "team.eyebrow": "A csapat", "wkd.eyebrow": "Hétvégén", "wkd.head": "Hétvégén az Aurorában", "wkd.offer": "Hétvégi ajánlat", "wkd.wine": "A hétvége bora", "wkd.glass": "Pohár", "wkd.bottle": "Palack", "wkd.until": "Eddig érvényes: {d}", "week.over": "Ennek a hétnek a menüje lejárt. Az új heti menü hamarosan felkerül.", "week.from": "Érvényes ettől: {d}", "week.next": "Jövő héten", "menuCard.head": "Válasszon az étlapról", "menuCard.title": "Állandó étlapunk", "menuCard.text": "Levesek és pörköltek, grillételek, halak, saláták és desszertek.", "menuCard.cta": "Az étlap megtekintése", "bookCard.title": "Foglaljon asztalt", "bookCard.text": "Küldje el kérését WhatsAppon vagy telefonon, és visszaigazoljuk.", "ph.dishName": "Étel neve", "ph.wineName": "Bor neve", "ph.desc": "rövid leírás", "ph.winery": "pincészet · évjárat", "ph.offerPrice": "ár", "preview.note": "Előnézet: így jelenik meg a hétvégi ajánlat és a hétvége bora, amikor a heti menü lejár. A szövegeket, árakat és fotókat a SITE.weekend blokkban kell megadni.", "preview.link": "Hétvégi nézet (előnézet)", "fd.label": "A konyhánkból", "fd.title": "Kiemelt ételek", "menu.lead": "Levesek és pörköltek, grillételek, halak, saláták, desszertek – és mellettük borok, pálinkák, kávé.", "title.etlap": "Étlap",
   "map.eyebrow": "Megközelítés", "map.appleDirections": "Útvonaltervezés Apple Térképpel", "map.appleOpen": "Megnyitás az Apple Térképen", "map.googleDirections": "Útvonal a Google Térképen", "map.activate": "Koppintson a térkép mozgatásához", "map.region": "Interaktív térkép – Aurora Étterem & Panzió",
   "title.home": "Aurora Étterem & Panzió – Bükfürdő", "title.etterem": "Étterem és étlap", "title.heti-menu": "Heti menü", "title.szallas": "Szállás",
-  "title.galeria": "Galéria", "title.kapcsolat": "Kapcsolat", "title.foglalas": "Foglalás", "title.suffix": "Aurora Étterem & Panzió, Bükfürdő",
+  "title.galeria": "Galéria", "title.kapcsolat": "Kapcsolat", "title.foglalas": "Foglalás",
+  "nav.events": "Rendezvények", "nav.sights": "Látnivalók", "title.rendezvenyek": "Rendezvények", "title.latnivalok": "Látnivalók a környéken",
+  "ev.eyebrow": "Rendezvények", "ev.title": "Ünnepeljen nálunk",
+  "ev.lead": "Születésnap, családi ünnep, céges vacsora vagy évzáró: az étteremben és jó időben a lombos teraszon zártkörű rendezvényeket is vállalunk, az alkalomhoz összeállított menüvel.",
+  "ev.teaser": "Születésnap, családi ünnep vagy céges vacsora: zártkörű rendezvényeket is vállalunk, az alkalomhoz összeállított menüvel.",
+  "ev.more": "Rendezvények és ajánlatkérés", "ev.occLabel": "Alkalmak",
+  "ev.o1.t": "Családi ünnepek", "ev.o1.p": "Születésnap, keresztelő, ballagás, évforduló.",
+  "ev.o2.t": "Céges események", "ev.o2.p": "Csapatvacsora, évzáró, üzleti ebéd vagy vacsora.",
+  "ev.o3.t": "Baráti összejövetelek", "ev.o3.p": "Osztálytalálkozó, baráti vacsora, kisebb társaságok.",
+  "ev.offerEyebrow": "Amit kínálunk", "ev.offerTitle": "Minden egy helyen",
+  "ev.f1": "Az alkalomhoz igazított menü, a magyar konyha klasszikusaitól a grillételekig", "ev.f2": "Terítés az étteremben, jó időben a lombos teraszon",
+  "ev.f3": "Szállás a vendégeknek ugyanabban a házban", "ev.f4": "Ingyenes parkolás",
+  "ev.stepsEyebrow": "Ajánlatkérés", "ev.stepsTitle": "Így kérhet ajánlatot",
+  "ev.s1": "Írja meg az alkalmat, a dátumot és a várható létszámot.", "ev.s2": "Összeállítjuk a menüjavaslatot és az ajánlatot.", "ev.s3": "Egyeztetjük a részleteket, a többit bízza ránk.",
+  "ev.mail": "Ajánlatkérés e-mailben", "ev.call": "Hívjon minket", "ev.mailSubject": "Rendezvény – ajánlatkérés",
+  "ev.mailBody": "Alkalom:\nDátum:\nVárható létszám:\nTelefonszám:\n", "ev.waHello": "Jó napot! Rendezvény miatt érdeklődnék.",
+  "sg.eyebrow": "Bük és környéke", "sg.title": "Látnivalók a környéken",
+  "sg.lead": "Bükfürdő jó kiindulópont: a gyógyfürdő pár perc sétára van tőlünk, Kőszeg, Szombathely, Sárvár és Sopron pedig autóval könnyen elérhető.",
+  "sg.town": "Bükfürdőn és Bükön", "sg.trips": "Kirándulások a környéken", "sg.web": "Weboldal",
+  "sg.note": "A távolságok Bükfürdőtől értendők, kerekítve. Nyitvatartásért és aktuális programokért nézze meg a helyszínek honlapját, vagy kérdezzen tőlünk.",
+  "sg.programs": "Aktuális programok Bükön: visitbuk.hu", "sg.stayTitle": "Szálljon meg nálunk",
+  "sg.stayText": "Napközben fürdő, kirándulás vagy golf, este vacsora nálunk, éjszakára pedig a szoba ugyanabban a házban.", "title.suffix": "Aurora Étterem & Panzió, Bükfürdő",
   "title.palyazatok": "Pályázatok", "title.impresszum": "Impresszum", "title.adatkezeles": "Adatkezelési tájékoztató", "foot.grants": "Pályázatok", "legal.eyebrow": "Tájékoztatás", "legal.huOnly": "",
   "meta.desc": "Családi étterem és panzió Bükfürdőn, a gyógyfürdő közelében: kortárs magyar konyha, lombos terasz, heti menü és kényelmes, modern szállás. Asztalfoglalás és szállásajánlat-kérés online."
  },
@@ -2122,10 +2344,31 @@ const I18N = {
   "u.guests": { one: "{n} Person", few: "{n} Personen", many: "{n} Personen" },
   "foot.tagline": "Familiengeführtes Restaurant mit Pension in Bükfürdő.", "foot.pages": "Seiten", "foot.privacy": "Datenschutz", "foot.imprint": "Impressum",
   "foot.rights": "Alle Rechte vorbehalten.", "foot.allergen": "Bei Fragen zu Allergenen wenden Sie sich gerne an unser Personal.",
-  "intro.text": "Ein Familienhaus nahe dem Heilbad Bükfürdő. *In der Küche, an der Bar und an Ihrem Tisch sind wir selbst für Sie da.*", "intro.parking": "Kostenlose Parkplätze", "team.eyebrow": "Das Team", "wkd.eyebrow": "Am Wochenende", "wkd.head": "Wochenende im Aurora", "wkd.offer": "Wochenendangebot", "wkd.wine": "Der Wein des Wochenendes", "wkd.glass": "Glas", "wkd.bottle": "Flasche", "wkd.until": "Gültig bis {d}", "week.over": "Das Menü dieser Woche ist abgelaufen. Das neue Wochenmenü folgt in Kürze.", "week.from": "Gültig ab {d}", "week.next": "Nächste Woche", "menuCard.head": "Wählen Sie aus unserer Karte", "menuCard.title": "Unsere Speisekarte", "menuCard.text": "Suppen und Pörkölt, Gegrilltes, Fisch, Salate und Desserts.", "menuCard.cta": "Zur Speisekarte", "bookCard.title": "Tisch reservieren", "bookCard.text": "Senden Sie uns Ihre Anfrage per WhatsApp oder telefonisch – wir bestätigen sie Ihnen.", "ph.dishName": "Name des Gerichts", "ph.wineName": "Name des Weins", "ph.desc": "kurze Beschreibung", "ph.winery": "Weingut · Jahrgang", "ph.offerPrice": "Preis", "fd.label": "Aus unserer Küche", "fd.title": "Ausgewählte Gerichte", "menu.lead": "Suppen und Pörkölt, Gegrilltes, Fisch, Salate und Desserts – dazu Weine, Pálinka und Kaffee.", "title.etlap": "Speisekarte",
+  "intro.text": "Familiäre Gastfreundschaft in Bükfürdő, nur wenige Gehminuten vom Heilbad. *Wir kochen mit frischen Zutaten und freuen uns auf Sie – zum Mittagessen, zum Abendessen oder für ein paar Nächte.*", "intro.parking": "Kostenlose Parkplätze", "team.eyebrow": "Das Team", "wkd.eyebrow": "Am Wochenende", "wkd.head": "Wochenende im Aurora", "wkd.offer": "Wochenendangebot", "wkd.wine": "Der Wein des Wochenendes", "wkd.glass": "Glas", "wkd.bottle": "Flasche", "wkd.until": "Gültig bis {d}", "week.over": "Das Menü dieser Woche ist abgelaufen. Das neue Wochenmenü folgt in Kürze.", "week.from": "Gültig ab {d}", "week.next": "Nächste Woche", "menuCard.head": "Wählen Sie aus unserer Karte", "menuCard.title": "Unsere Speisekarte", "menuCard.text": "Suppen und Pörkölt, Gegrilltes, Fisch, Salate und Desserts.", "menuCard.cta": "Zur Speisekarte", "bookCard.title": "Tisch reservieren", "bookCard.text": "Senden Sie uns Ihre Anfrage per WhatsApp oder telefonisch – wir bestätigen sie Ihnen.", "ph.dishName": "Name des Gerichts", "ph.wineName": "Name des Weins", "ph.desc": "kurze Beschreibung", "ph.winery": "Weingut · Jahrgang", "ph.offerPrice": "Preis", "fd.label": "Aus unserer Küche", "fd.title": "Ausgewählte Gerichte", "menu.lead": "Suppen und Pörkölt, Gegrilltes, Fisch, Salate und Desserts – dazu Weine, Pálinka und Kaffee.", "title.etlap": "Speisekarte",
   "map.eyebrow": "Anfahrt", "map.appleDirections": "Route mit Apple Karten", "map.appleOpen": "In Apple Karten öffnen", "map.googleDirections": "Route in Google Maps", "map.activate": "Tippen, um die Karte zu bewegen", "map.region": "Interaktive Karte – Aurora Restaurant & Pension",
   "title.home": "Aurora Restaurant & Pension – Bükfürdő", "title.etterem": "Restaurant & Speisekarte", "title.heti-menu": "Wochenmenü", "title.szallas": "Unterkunft",
-  "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Reservierung", "title.suffix": "Aurora Restaurant & Pension, Bükfürdő",
+  "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Reservierung",
+  "nav.events": "Feiern", "nav.sights": "Umgebung", "title.rendezvenyek": "Feiern und Veranstaltungen", "title.latnivalok": "Ausflugsziele in der Umgebung",
+  "ev.eyebrow": "Feiern & Events", "ev.title": "Feiern Sie bei uns",
+  "ev.lead": "Geburtstag, Familienfeier, Firmenessen oder Jahresabschluss: Im Restaurant und bei schönem Wetter auf der Terrasse im Grünen richten wir auch geschlossene Gesellschaften aus – mit einem Menü, das wir auf den Anlass abstimmen.",
+  "ev.teaser": "Geburtstag, Familienfeier oder Firmenessen: Wir richten auch geschlossene Gesellschaften aus, mit einem Menü passend zum Anlass.",
+  "ev.more": "Feiern & Anfrage", "ev.occLabel": "Anlässe",
+  "ev.o1.t": "Familienfeiern", "ev.o1.p": "Geburtstag, Taufe, Schulabschluss, Jubiläum.",
+  "ev.o2.t": "Firmenfeiern", "ev.o2.p": "Teamessen, Jahresabschluss, Geschäftsessen.",
+  "ev.o3.t": "Treffen mit Freunden", "ev.o3.p": "Klassentreffen, Abendessen mit Freunden, kleinere Gruppen.",
+  "ev.offerEyebrow": "Was wir bieten", "ev.offerTitle": "Alles an einem Ort",
+  "ev.f1": "Ein Menü passend zum Anlass – von ungarischen Klassikern bis zu Grillgerichten", "ev.f2": "Tafel im Restaurant oder bei schönem Wetter auf der Terrasse im Grünen",
+  "ev.f3": "Zimmer für Ihre Gäste im selben Haus", "ev.f4": "Kostenlose Parkplätze",
+  "ev.stepsEyebrow": "Anfrage", "ev.stepsTitle": "So fragen Sie an",
+  "ev.s1": "Nennen Sie uns Anlass, Datum und die ungefähre Personenzahl.", "ev.s2": "Wir stellen einen Menüvorschlag und ein Angebot für Sie zusammen.", "ev.s3": "Wir besprechen die Details – den Rest überlassen Sie uns.",
+  "ev.mail": "Anfrage per E-Mail", "ev.call": "Rufen Sie uns an", "ev.mailSubject": "Anfrage: Feier im Aurora",
+  "ev.mailBody": "Anlass:\nDatum:\nPersonenzahl (ca.):\nTelefon:\n", "ev.waHello": "Guten Tag! Ich interessiere mich für eine Feier bei Ihnen.",
+  "sg.eyebrow": "Bük und Umgebung", "sg.title": "Ausflugsziele in der Umgebung",
+  "sg.lead": "Bükfürdő ist ein guter Ausgangspunkt: Das Heilbad liegt nur wenige Gehminuten von uns entfernt, Kőszeg, Szombathely, Sárvár und Sopron sind mit dem Auto gut erreichbar.",
+  "sg.town": "In Bükfürdő und Bük", "sg.trips": "Ausflüge in die Umgebung", "sg.web": "Website",
+  "sg.note": "Entfernungen ab Bükfürdő, gerundet. Öffnungszeiten und aktuelle Programme finden Sie auf den Websites der Ausflugsziele – oder fragen Sie uns.",
+  "sg.programs": "Aktuelle Veranstaltungen in Bük: visitbuk.hu", "sg.stayTitle": "Übernachten Sie bei uns",
+  "sg.stayText": "Tagsüber Therme, Ausflug oder Golf, abends Essen bei uns – und das Zimmer im selben Haus.", "title.suffix": "Aurora Restaurant & Pension, Bükfürdő",
   "title.palyazatok": "Förderprojekte", "title.impresszum": "Impressum", "title.adatkezeles": "Datenschutzerklärung", "foot.grants": "Förderprojekte", "legal.eyebrow": "Information", "legal.huOnly": "Dieser Inhalt ist nur auf Ungarisch verfügbar.",
   "meta.desc": "Familiengeführtes Restaurant mit Pension in Bükfürdő nahe der Therme: zeitgemäße ungarische Küche, Terrasse im Grünen, Wochenmenü und komfortable Unterkunft. Tisch reservieren und Zimmer anfragen."
  },
@@ -2219,10 +2462,31 @@ const I18N = {
   "u.guests": { one: "{n} osoba", few: "{n} osoby", many: "{n} osob" },
   "foot.tagline": "Rodinná restaurace a penzion v Bükfürdő.", "foot.pages": "Stránky", "foot.privacy": "Ochrana osobních údajů", "foot.imprint": "Tiráž",
   "foot.rights": "Všechna práva vyhrazena.", "foot.allergen": "Informace o alergenech vám rád poskytne náš personál.",
-  "intro.text": "Rodinný dům nedaleko lázní Bükfürdő. *V kuchyni, u baru i u vašeho stolu jsme tu pro vás my sami.*", "intro.parking": "Parkování zdarma", "team.eyebrow": "Náš tým", "wkd.eyebrow": "O víkendu", "wkd.head": "Víkend v Auroře", "wkd.offer": "Víkendová nabídka", "wkd.wine": "Víno víkendu", "wkd.glass": "Sklenka", "wkd.bottle": "Láhev", "wkd.until": "Platí do {d}", "week.over": "Menu tohoto týdne skončilo. Nové týdenní menu brzy zveřejníme.", "week.from": "Platí od {d}", "week.next": "Příští týden", "menuCard.head": "Vyberte si z jídelního lístku", "menuCard.title": "Náš jídelní lístek", "menuCard.text": "Polévky a perkelty, jídla z grilu, ryby, saláty a dezerty.", "menuCard.cta": "Zobrazit jídelní lístek", "bookCard.title": "Rezervujte si stůl", "bookCard.text": "Pošlete nám požadavek přes WhatsApp nebo telefonicky a my vám ho potvrdíme.", "ph.dishName": "Název jídla", "ph.wineName": "Název vína", "ph.desc": "krátký popis", "ph.winery": "vinařství · ročník", "ph.offerPrice": "cena", "fd.label": "Z naší kuchyně", "fd.title": "Vybraná jídla", "menu.lead": "Polévky a perkelty, jídla z grilu, ryby, saláty a dezerty – k tomu vína, pálenky a káva.", "title.etlap": "Jídelní lístek",
+  "intro.text": "Rodinná pohostinnost v Bükfürdő, jen pár minut chůze od lázní. *Vaříme z čerstvých surovin a rádi vás přivítáme na oběd, na večeři nebo na pár nocí.*", "intro.parking": "Parkování zdarma", "team.eyebrow": "Náš tým", "wkd.eyebrow": "O víkendu", "wkd.head": "Víkend v Auroře", "wkd.offer": "Víkendová nabídka", "wkd.wine": "Víno víkendu", "wkd.glass": "Sklenka", "wkd.bottle": "Láhev", "wkd.until": "Platí do {d}", "week.over": "Menu tohoto týdne skončilo. Nové týdenní menu brzy zveřejníme.", "week.from": "Platí od {d}", "week.next": "Příští týden", "menuCard.head": "Vyberte si z jídelního lístku", "menuCard.title": "Náš jídelní lístek", "menuCard.text": "Polévky a perkelty, jídla z grilu, ryby, saláty a dezerty.", "menuCard.cta": "Zobrazit jídelní lístek", "bookCard.title": "Rezervujte si stůl", "bookCard.text": "Pošlete nám požadavek přes WhatsApp nebo telefonicky a my vám ho potvrdíme.", "ph.dishName": "Název jídla", "ph.wineName": "Název vína", "ph.desc": "krátký popis", "ph.winery": "vinařství · ročník", "ph.offerPrice": "cena", "fd.label": "Z naší kuchyně", "fd.title": "Vybraná jídla", "menu.lead": "Polévky a perkelty, jídla z grilu, ryby, saláty a dezerty – k tomu vína, pálenky a káva.", "title.etlap": "Jídelní lístek",
   "map.eyebrow": "Jak se k nám dostanete", "map.appleDirections": "Trasa v Mapách Apple", "map.appleOpen": "Otevřít v Mapách Apple", "map.googleDirections": "Trasa v Mapách Google", "map.activate": "Klepnutím mapu aktivujete", "map.region": "Interaktivní mapa – Aurora Restaurace & Penzion",
   "title.home": "Aurora Restaurace & Penzion – Bükfürdő", "title.etterem": "Restaurace a jídelní lístek", "title.heti-menu": "Týdenní menu", "title.szallas": "Ubytování",
-  "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Rezervace", "title.suffix": "Aurora Restaurace & Penzion, Bükfürdő",
+  "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Rezervace",
+  "nav.events": "Oslavy", "nav.sights": "Okolí", "title.rendezvenyek": "Oslavy a firemní akce", "title.latnivalok": "Tipy na výlety v okolí",
+  "ev.eyebrow": "Oslavy a akce", "ev.title": "Oslavte to u nás",
+  "ev.lead": "Narozeniny, rodinná oslava, firemní večeře nebo konec roku: v restauraci a za pěkného počasí na terase v zeleni pořádáme i uzavřené akce s menu sestaveným na míru.",
+  "ev.teaser": "Narozeniny, rodinná oslava nebo firemní večeře: pořádáme i uzavřené akce s menu sestaveným na míru.",
+  "ev.more": "Oslavy a poptávka", "ev.occLabel": "Příležitosti",
+  "ev.o1.t": "Rodinné oslavy", "ev.o1.p": "Narozeniny, křtiny, promoce, výročí.",
+  "ev.o2.t": "Firemní akce", "ev.o2.p": "Týmová večeře, oslava konce roku, pracovní oběd či večeře.",
+  "ev.o3.t": "Setkání s přáteli", "ev.o3.p": "Třídní sraz, večeře s přáteli, menší společnosti.",
+  "ev.offerEyebrow": "Co nabízíme", "ev.offerTitle": "Vše na jednom místě",
+  "ev.f1": "Menu na míru příležitosti – od maďarské klasiky po jídla z grilu", "ev.f2": "Stolování v restauraci, za hezkého počasí na terase v zeleni",
+  "ev.f3": "Ubytování pro hosty ve stejném domě", "ev.f4": "Parkování zdarma",
+  "ev.stepsEyebrow": "Poptávka", "ev.stepsTitle": "Jak poptat akci",
+  "ev.s1": "Napište nám příležitost, datum a přibližný počet hostů.", "ev.s2": "Připravíme návrh menu a nabídku.", "ev.s3": "Domluvíme podrobnosti, zbytek nechte na nás.",
+  "ev.mail": "Poptávka e-mailem", "ev.call": "Zavolejte nám", "ev.mailSubject": "Poptávka: oslava v Auroře",
+  "ev.mailBody": "Příležitost:\nDatum:\nPočet hostů (cca):\nTelefon:\n", "ev.waHello": "Dobrý den, mám zájem o uspořádání akce u vás.",
+  "sg.eyebrow": "Bük a okolí", "sg.title": "Tipy na výlety v okolí",
+  "sg.lead": "Bükfürdő je dobré výchozí místo: lázně jsou od nás pár minut chůze a Kőszeg, Szombathely, Sárvár i Šoproň jsou autem snadno dostupné.",
+  "sg.town": "V Bükfürdő a Büku", "sg.trips": "Výlety do okolí", "sg.web": "Web",
+  "sg.note": "Vzdálenosti jsou od Bükfürdő, zaokrouhlené. Otevírací dobu a aktuální programy najdete na webech jednotlivých míst – nebo se zeptejte nás.",
+  "sg.programs": "Aktuální akce v Büku: visitbuk.hu", "sg.stayTitle": "Ubytujte se u nás",
+  "sg.stayText": "Přes den lázně, výlet nebo golf, večer večeře u nás a pokoj ve stejném domě.", "title.suffix": "Aurora Restaurace & Penzion, Bükfürdő",
   "title.palyazatok": "Dotační projekty", "title.impresszum": "Tiráž", "title.adatkezeles": "Zásady ochrany osobních údajů", "foot.grants": "Dotační projekty", "legal.eyebrow": "Informace", "legal.huOnly": "Tento obsah je k dispozici pouze v maďarštině.",
   "meta.desc": "Rodinná restaurace a penzion v Bükfürdő nedaleko lázní: současná maďarská kuchyně, terasa pod stromy, týdenní menu a pohodlné ubytování. Rezervace stolu a poptávka ubytování online."
  },
@@ -2316,10 +2580,31 @@ const I18N = {
   "u.guests": { one: "{n} guest", few: "{n} guests", many: "{n} guests" },
   "foot.tagline": "Family-run restaurant and guesthouse in Bükfürdő.", "foot.pages": "Pages", "foot.privacy": "Privacy", "foot.imprint": "Legal notice",
   "foot.rights": "All rights reserved.", "foot.allergen": "Please ask our staff for information on allergens.",
-  "intro.text": "A family house close to the Bükfürdő spa. *In the kitchen, behind the bar and at your table, it's us you'll meet.*", "intro.parking": "Free parking", "team.eyebrow": "The team", "wkd.eyebrow": "This weekend", "wkd.head": "The weekend at Aurora", "wkd.offer": "Weekend special", "wkd.wine": "Wine of the weekend", "wkd.glass": "Glass", "wkd.bottle": "Bottle", "wkd.until": "Valid until {d}", "week.over": "This week's menu has ended. The new weekly menu will be up soon.", "week.from": "Valid from {d}", "week.next": "Next week", "menuCard.head": "Choose from our menu", "menuCard.title": "Our à la carte menu", "menuCard.text": "Soups and stews, grills, fish, salads and desserts.", "menuCard.cta": "View the menu", "bookCard.title": "Book a table", "bookCard.text": "Send us your request on WhatsApp or by phone and we'll confirm it.", "ph.dishName": "Dish name", "ph.wineName": "Wine name", "ph.desc": "short description", "ph.winery": "winery · vintage", "ph.offerPrice": "price", "fd.label": "From our kitchen", "fd.title": "Featured dishes", "menu.lead": "Soups and stews, grills, fish, salads and desserts – plus wines, fruit brandy and coffee.", "title.etlap": "Menu",
+  "intro.text": "Family hospitality in Bükfürdő, a few minutes' walk from the spa. *We cook with fresh ingredients and look forward to welcoming you for lunch, for dinner or for a few nights.*", "intro.parking": "Free parking", "team.eyebrow": "The team", "wkd.eyebrow": "This weekend", "wkd.head": "The weekend at Aurora", "wkd.offer": "Weekend special", "wkd.wine": "Wine of the weekend", "wkd.glass": "Glass", "wkd.bottle": "Bottle", "wkd.until": "Valid until {d}", "week.over": "This week's menu has ended. The new weekly menu will be up soon.", "week.from": "Valid from {d}", "week.next": "Next week", "menuCard.head": "Choose from our menu", "menuCard.title": "Our à la carte menu", "menuCard.text": "Soups and stews, grills, fish, salads and desserts.", "menuCard.cta": "View the menu", "bookCard.title": "Book a table", "bookCard.text": "Send us your request on WhatsApp or by phone and we'll confirm it.", "ph.dishName": "Dish name", "ph.wineName": "Wine name", "ph.desc": "short description", "ph.winery": "winery · vintage", "ph.offerPrice": "price", "fd.label": "From our kitchen", "fd.title": "Featured dishes", "menu.lead": "Soups and stews, grills, fish, salads and desserts – plus wines, fruit brandy and coffee.", "title.etlap": "Menu",
   "map.eyebrow": "Getting here", "map.appleDirections": "Directions in Apple Maps", "map.appleOpen": "Open in Apple Maps", "map.googleDirections": "Directions in Google Maps", "map.activate": "Tap to move the map", "map.region": "Interactive map – Aurora Restaurant & Apartments",
   "title.home": "Aurora Restaurant & Apartments – Bükfürdő", "title.etterem": "Restaurant & menu", "title.heti-menu": "Weekly menu", "title.szallas": "Accommodation",
-  "title.galeria": "Gallery", "title.kapcsolat": "Contact", "title.foglalas": "Booking", "title.suffix": "Aurora Restaurant & Apartments, Bükfürdő",
+  "title.galeria": "Gallery", "title.kapcsolat": "Contact", "title.foglalas": "Booking",
+  "nav.events": "Events", "nav.sights": "Explore", "title.rendezvenyek": "Private events", "title.latnivalok": "Things to do nearby",
+  "ev.eyebrow": "Events", "ev.title": "Celebrate with us",
+  "ev.lead": "Birthdays, family celebrations, company dinners or end-of-year parties: we host private events in the restaurant and, in good weather, on our leafy terrace, with a menu put together for the occasion.",
+  "ev.teaser": "Birthdays, family celebrations or company dinners: we host private events, with a menu put together for the occasion.",
+  "ev.more": "Events & enquiries", "ev.occLabel": "Occasions",
+  "ev.o1.t": "Family celebrations", "ev.o1.p": "Birthdays, christenings, graduations, anniversaries.",
+  "ev.o2.t": "Company events", "ev.o2.p": "Team dinners, end-of-year parties, business lunches and dinners.",
+  "ev.o3.t": "Get-togethers", "ev.o3.p": "School reunions, dinners with friends, smaller groups.",
+  "ev.offerEyebrow": "What we offer", "ev.offerTitle": "Everything in one place",
+  "ev.f1": "A menu tailored to the occasion, from Hungarian classics to grills", "ev.f2": "Tables in the restaurant or, in good weather, on the leafy terrace",
+  "ev.f3": "Rooms for your guests in the same house", "ev.f4": "Free parking",
+  "ev.stepsEyebrow": "Enquiries", "ev.stepsTitle": "How to enquire",
+  "ev.s1": "Tell us the occasion, the date and roughly how many guests.", "ev.s2": "We put together a suggested menu and a quote.", "ev.s3": "We agree the details – leave the rest to us.",
+  "ev.mail": "Enquire by email", "ev.call": "Call us", "ev.mailSubject": "Event enquiry – Aurora",
+  "ev.mailBody": "Occasion:\nDate:\nNumber of guests (approx.):\nPhone:\n", "ev.waHello": "Hello! I'd like to ask about holding an event with you.",
+  "sg.eyebrow": "Bük and around", "sg.title": "Things to do nearby",
+  "sg.lead": "Bükfürdő is a good base: the spa is a few minutes' walk from us, and Kőszeg, Szombathely, Sárvár and Sopron are an easy drive away.",
+  "sg.town": "In Bükfürdő and Bük", "sg.trips": "Day trips", "sg.web": "Website",
+  "sg.note": "Distances are from Bükfürdő, rounded. For opening hours and current events, see each venue's website – or just ask us.",
+  "sg.programs": "What's on in Bük: visitbuk.hu", "sg.stayTitle": "Stay with us",
+  "sg.stayText": "Spa, day trip or golf by day, dinner with us in the evening, and your room in the same house.", "title.suffix": "Aurora Restaurant & Apartments, Bükfürdő",
   "title.palyazatok": "Grant projects", "title.impresszum": "Legal notice", "title.adatkezeles": "Privacy notice", "foot.grants": "Grant projects", "legal.eyebrow": "Information", "legal.huOnly": "This content is available in Hungarian only.",
   "meta.desc": "Family-run restaurant and guesthouse in Bükfürdő, close to the spa: contemporary Hungarian food, a leafy terrace, a weekly menu and comfortable accommodation. Book a table or send an accommodation enquiry online."
  }
@@ -2686,6 +2971,7 @@ function renderHours() {
   const soc = [["Facebook", SITE.social.facebook], ["Instagram", SITE.social.instagram]].filter((s) => s[1]);
   render("social", soc.length ? soc.map(([n, u]) => `<a class="btn btn-line btn-sm" href="${esc(u)}" target="_blank" rel="noopener">${n}</a>`).join("") : ph("ph.social"));
   hideEmptyInfo("social", !soc.length);
+  render("footSocial", soc.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n}</a>`).join(" · "));
   const legal = [["foot.privacy", SITE.links.privacy], ["foot.imprint", SITE.links.imprint], ["foot.grants", SITE.links.grants]].filter(([k, u]) => u || !SITE.live);
   render("legal", legal.map(([k, u]) => u ? (u.charAt(0) === "#" ? `<a href="${esc(u)}" style="color:inherit">${esc(t(k))}</a>` : `<a href="${esc(u)}" target="_blank" rel="noopener" style="color:inherit">${esc(t(k))}</a>`) : `<span>${esc(t(k))} <span class="phtext" style="color:inherit">[${esc(t("ph.link"))}]</span></span>`).join("") +
     (SITE.draftNotes ? `<a href="#hetvege-elonezet" style="color:inherit">${esc(t("preview.link"))}</a>` : ""));
@@ -2719,6 +3005,30 @@ function renderRooms() {
   const sel = $("#s-room"); const keep = sel.value;
   sel.innerHTML = `<option value="">${esc(t("stay.anyRoom"))}</option>` + SITE.rooms.map((r, i) => `<option value="${i}">${esc(L(r.name) || t("stay.roomN", { n: i + 1 }))}</option>`).join("");
   sel.value = keep;
+}
+
+/* ---------- Things to do ---------- */
+function sightHTML(sg) {
+  const link = sg.url ? `<a class="tlink" href="${esc(sg.url)}" target="_blank" rel="noopener">${esc(t("sg.web"))}</a>` : "";
+  const meta = L(sg.meta) ? `<p class="sight-meta">${esc(L(sg.meta))}</p>` : "";
+  return `<article class="sight rv">${meta}<h3>${esc(L(sg.name))}</h3><p>${esc(L(sg.text))}</p>${link}</article>`;
+}
+function renderSights() {
+  const S = SITE.sights || {};
+  render("sightsTown", (S.town || []).filter((x) => L(x.name)).map(sightHTML).join(""));
+  render("sightsTrips", (S.trips || []).filter((x) => L(x.name)).map(sightHTML).join(""));
+}
+
+/* ---------- Events: enquiry buttons ---------- */
+function renderEvents() {
+  const body = t("ev.mailBody");
+  const mail = C.email ? `mailto:${C.email}?subject=${encodeURIComponent(t("ev.mailSubject"))}&body=${encodeURIComponent(body)}` : "";
+  const waNum = (C.whatsapp || "").replace(/\D/g, "");
+  const wa = waNum ? `https://wa.me/${waNum}?text=${encodeURIComponent(t("ev.waHello") + "\n\n" + body)}` : "";
+  render("evActions",
+    (mail ? `<a class="btn btn-primary" href="${esc(mail)}">${esc(t("ev.mail"))}</a>` : "") +
+    (C.phone ? `<a class="btn btn-line" href="${esc(telHref())}">${esc(t("ev.call"))}: ${esc(C.phone)}</a>` : "") +
+    (wa ? `<a class="btn btn-line" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>` : ""));
 }
 
 /* ---------- Gallery + lightbox ---------- */
@@ -3352,13 +3662,13 @@ function openSheet() { behindSheet().forEach((el) => (el.inert = true)); sheet.h
 function closeSheet(restore) { if (sheet.hidden) return; behindSheet().forEach((el) => (el.inert = false)); sheet.hidden = true; menuBtn.setAttribute("aria-expanded", "false"); menuBtn.setAttribute("aria-label", t("nav.open")); document.body.classList.remove("sheet-open"); if (restore) menuBtn.focus(); }
 menuBtn.addEventListener("click", () => (sheet.hidden ? openSheet() : closeSheet(true)));
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(true); });
-matchMedia("(min-width:1180px)").addEventListener("change", (m) => { if (m.matches) closeSheet(); });
+matchMedia("(min-width:1260px)").addEventListener("change", (m) => { if (m.matches) closeSheet(); });
 
 /* ---------- Skip link ---------- */
 $("#skipLink").addEventListener("click", (e) => { e.preventDefault(); const h = $(".view:not([hidden]) h1") || $("#main"); h.setAttribute("tabindex", "-1"); h.focus(); });
 
 /* ---------- Router ---------- */
-const HASH_TO_VIEW = { "": "home", "fooldal": "home", "etterem": "etterem", "etlap": "etlap", "heti-menu": "heti-menu", "szallas": "szallas", "galeria": "galeria", "kapcsolat": "kapcsolat", "foglalas": "foglalas", "szallasfoglalas": "foglalas", "hetvege-elonezet": "home", "palyazatok": "palyazatok", "impresszum": "impresszum", "adatkezeles": "adatkezeles" };
+const HASH_TO_VIEW = { "": "home", "fooldal": "home", "etterem": "etterem", "etlap": "etlap", "heti-menu": "heti-menu", "szallas": "szallas", "galeria": "galeria", "kapcsolat": "kapcsolat", "foglalas": "foglalas", "szallasfoglalas": "foglalas", "hetvege-elonezet": "home", "palyazatok": "palyazatok", "impresszum": "impresszum", "adatkezeles": "adatkezeles", "rendezvenyek": "rendezvenyek", "latnivalok": "latnivalok" };
 let currentView = null, firstRoute = true;
 function updateTitle() {
   const v = currentView || "home";
@@ -3414,7 +3724,7 @@ window.addEventListener("popstate", () => route());
 
 /* ---------- Language ---------- */
 function renderAll() {
-  bindContact(); renderHero(); renderPhotos(); renderStrip(); renderReviews(); renderSabee(); renderWeekly(); renderFeatured(); renderDishes(); renderFeaturedDishes(); renderMenu(); renderNews(); renderHours(); renderRooms(); renderGallery(); applyCtas(); syncMqButtons();
+  bindContact(); renderHero(); renderPhotos(); renderStrip(); renderReviews(); renderSabee(); renderWeekly(); renderFeatured(); renderDishes(); renderFeaturedDishes(); renderMenu(); renderNews(); renderHours(); renderRooms(); renderSights(); renderEvents(); renderGallery(); applyCtas(); syncMqButtons();
   if (tStep === 3 && !tf.hidden) fillReview();
   updateNights();
   if (tCal) { tCal.render(); sCal.render(); updateCalSums(); }
