@@ -1658,6 +1658,22 @@ textarea.input{min-height:110px;resize:vertical}
   </div>
 </dialog>
 
+<!-- Netlify Forms: hidden copies of the two booking forms. Netlify reads these at deploy time, stores every
+     request under Forms in the Netlify dashboard and e-mails it (Notifications > Form submission notifications).
+     The visible forms send their data here from JavaScript (endpoint: "netlify" in SITE.booking). Keep the field names in sync. -->
+<form name="asztalfoglalas" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="subject"><input name="lang">
+  <input name="date"><input name="time"><input name="guests"><input name="seating">
+  <input name="name"><input name="phone"><input name="email"><textarea name="note"></textarea>
+  <textarea name="summary"></textarea>
+</form>
+<form name="szallas-ajanlatkeres" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="subject"><input name="lang">
+  <input name="arrival"><input name="departure"><input name="adults"><input name="children"><input name="ages"><input name="room">
+  <input name="name"><input name="phone"><input name="email"><textarea name="message"></textarea>
+  <textarea name="summary"></textarea>
+</form>
+
 <script>
 /* =====================================================================
    SITE — the editable content of the website.
@@ -1696,7 +1712,7 @@ const SITE = {
     table: {
       externalUrl: "",              // external table-booking system, if you use one
       openExternalDirectly: false,  // true: every "Asztalfoglalás" button opens externalUrl
-      endpoint: "",                 // form POST endpoint (e.g. Formspree); empty = guest sends by phone/SMS/e-mail
+      endpoint: "netlify",          // "netlify" = Netlify Forms (e-mail + Netlify dashboard); or a JSON POST URL (e.g. Formspree); empty = guest sends by WhatsApp/phone/SMS/e-mail
       maxGuests: 20,
       duration: 120,                // minutes; length of the calendar entry made from a table request
       timeSlots: []                 // e.g. ["12:00","12:30","18:00","18:30"]; empty = free time input
@@ -1717,7 +1733,7 @@ const SITE = {
         embed: false,        // true: shows the booking engine inside the booking page; false: opens it in a new tab
         openDirectly: true   // true: every "Szállásfoglalás" button goes straight to SabeeApp
       },
-      endpoint: "",
+      endpoint: "netlify",          // same as the table booking endpoint
       openExternalDirectly: false,  // true: "Szállásfoglalás" opens the first external link
       external: [
         { label: { hu: "Online foglalás", de: "Online buchen", cs: "Online rezervace", en: "Book online" }, url: "" }
@@ -3493,13 +3509,25 @@ function stayMessage() {
   if (lang !== "hu") text += "\n\n— HU —\n" + inLang("hu", body);
   return text;
 }
+/* Netlify Forms: URL-encoded POST to the site root with the hidden form's name (see the hidden forms above the script). */
+function netlifyBody(kind, payload, text) {
+  const subject = kind === "table"
+    ? `Asztalfoglalás: ${payload.name}, ${payload.date} ${payload.time}, ${payload.guests} fő`
+    : `Szállásajánlat-kérés: ${payload.name}, ${payload.arrival} – ${payload.departure}`;
+  const fields = { "form-name": kind === "table" ? "asztalfoglalas" : "szallas-ajanlatkeres", subject, lang, ...payload, summary: text };
+  const body = new URLSearchParams();
+  Object.entries(fields).forEach(([k, v]) => body.append(k, v == null ? "" : String(v)));
+  return body.toString();
+}
 async function deliver(kind, payload, text, form, resultEl, submitBtn) {
   const ep = kind === "table" ? SITE.booking.table.endpoint : SITE.booking.stay.endpoint;
   let mode = "manual";
   if (ep) {
     const label = submitBtn.textContent; submitBtn.disabled = true; submitBtn.textContent = t("bk.sending");
     try {
-      const r = await fetch(ep, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ type: kind, lang, ...payload, message: text }) });
+      const r = ep === "netlify"
+        ? await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: netlifyBody(kind, payload, text) })
+        : await fetch(ep, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ type: kind, lang, ...payload, message: text }) });
       mode = r.ok ? "sent" : "fail";
     } catch (e) { mode = "fail"; }
     submitBtn.disabled = false; submitBtn.textContent = label;
