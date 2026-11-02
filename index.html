@@ -1796,23 +1796,23 @@ const SITE = {
   //   After validUntil the featured spot on the home page switches to the weekend offer below.
   // Each row of days is one day starting Monday. Course types: soup, main, mainA, mainB, dessert.
   weeklyMenu: {
-    weekStart: "2026-10-05",
-    validFrom: "2026-10-05 00:00",
-    validUntil: "2026-10-09 23:59",
+    weekStart: "2026-11-02",
+    validFrom: "2026-11-02 00:00",
+    validUntil: "2026-11-06 23:59",
     price: 2490,                    // menu price in Ft
-    served: { hu: "", de: "", cs: "", en: "" },   // optional, e.g. "Hétköznap 11:30–15:00"; hidden when empty
+    served: { hu: "Hétköznap 11:00–15:00", de: "Werktags 11:00–15:00", cs: "Ve všední dny 11:00–15:00", en: "Weekdays 11:00–15:00" },   // optional, e.g. "Hétköznap 11:30–15:00"; hidden when empty
     pdfUrl: "",
     days: [
-      { courses: [ { type: "soup", text: {"hu": "Grízgaluska leves csészében", "de": "Grießnockerlsuppe in der Tasse", "cs": "Polévka s krupičnými noky v šálku", "en": "Semolina dumpling soup, cup"} },
-                  { type: "main", text: {"hu": "Rántott csirkemell rizibizivel", "de": "Gebackene Hühnerbrust mit Risi-Bisi", "cs": "Smažená kuřecí prsa s rýží s hráškem", "en": "Breaded chicken breast with rice and peas"} } ] },
+      { courses: [ { type: "soup", text: {"hu": "Húsleves metélttel", "de": "Fleischsuppe mit Fadennudeln", "cs": "Masový vývar s nudlemi", "en": "Clear meat soup with noodles"} },
+                  { type: "main", text: {"hu": "Grillezett fűszeres csirkecombfilé hasábburgonyával, salátával", "de": "Gegrilltes gewürztes Hähnchenschenkelfilet mit Pommes frites und Salat", "cs": "Grilované kořeněné vykostěné kuřecí stehno s hranolky a salátem", "en": "Grilled spiced chicken thigh fillet with fries and salad"} } ] },
+      { courses: [ { type: "soup", text: {"hu": "Májgombócleves", "de": "Leberknödelsuppe", "cs": "Polévka s játrovými knedlíčky", "en": "Liver dumpling soup"} },
+                  { type: "main", text: {"hu": "Lecsós sertéskaraj tarhonyával", "de": "Schweinskarree mit Letscho und Eiergraupen", "cs": "Vepřová kotleta s lečem a tarhoňou", "en": "Pork loin in pepper and tomato sauce with egg barley"} } ] },
       { courses: [ { type: "soup", text: {"hu": "Zöldségleves", "de": "Gemüsesuppe", "cs": "Zeleninová polévka", "en": "Vegetable soup"} },
-                  { type: "main", text: {"hu": "Sertéskaraj Óvári módra zöldséges bulgurral", "de": "Schweinskarree nach Óvárer Art mit Gemüse-Bulgur", "cs": "Vepřová kotleta po óvárijsku se zeleninovým bulgurem", "en": "Pork loin Óvári style with vegetable bulgur"} } ] },
-      { courses: [ { type: "soup", text: {"hu": "Sütőtökkrémleves", "de": "Kürbiscremesuppe", "cs": "Dýňová krémová polévka", "en": "Roasted pumpkin cream soup"} },
-                  { type: "main", text: {"hu": "Csirkemell grillezett zöldségekkel és fűszeres steakburgonyával", "de": "Hühnerbrust mit gegrilltem Gemüse und gewürzten Steakkartoffeln", "cs": "Kuřecí prsa s grilovanou zeleninou a kořeněnými steakovými brambory", "en": "Chicken breast with grilled vegetables and spiced steak potatoes"} } ] },
-      { courses: [ { type: "soup", text: {"hu": "Húsleves májgombóccal", "de": "Fleischsuppe mit Leberknödel", "cs": "Masový vývar s játrovými knedlíčky", "en": "Clear meat soup with liver dumplings"} },
-                  { type: "main", text: {"hu": "Bakonyi sertéskaraj galuskával", "de": "Schweinskarree nach Bakonyer Art mit Nockerln", "cs": "Vepřová kotleta po bakoňsku s noky", "en": "Pork loin Bakony style with dumplings"} } ] },
-      { courses: [ { type: "soup", text: {"hu": "Paradicsomleves", "de": "Tomatensuppe", "cs": "Rajská polévka", "en": "Tomato soup"} },
-                  { type: "main", text: {"hu": "Rántott hal burgonyapürével", "de": "Gebackener Fisch mit Kartoffelpüree", "cs": "Smažená ryba s bramborovou kaší", "en": "Breaded fish with mashed potatoes"} } ] }
+                  { type: "main", text: {"hu": "Csirkemell sajtmártással, kukoricás rizzsel", "de": "Hühnerbrust mit Käsesauce und Mais-Reis", "cs": "Kuřecí prsa se sýrovou omáčkou a rýží s kukuřicí", "en": "Chicken breast with cheese sauce and sweetcorn rice"} } ] },
+      { courses: [ { type: "soup", text: {"hu": "Zöldborsókrémleves", "de": "Erbsencremesuppe", "cs": "Hrášková krémová polévka", "en": "Cream of green pea soup"} },
+                  { type: "main", text: {"hu": "Rántott sertéskaraj burgonyasalátával", "de": "Gebackenes Schweinsschnitzel mit Kartoffelsalat", "cs": "Smažený vepřový řízek s bramborovým salátem", "en": "Breaded pork cutlet with potato salad"} } ] },
+      { courses: [ { type: "soup", text: {"hu": "Lebbencsleves", "de": "Kartoffelsuppe mit Teigflecken", "cs": "Bramborová polévka s těstovinovými plátky", "en": "Potato soup with broken pasta sheets"} },
+                  { type: "main", text: {"hu": "Nádudvari fokhagymás-szalonnás karaj sült burgonyával", "de": "Schweinskarree nach Nádudvarer Art mit Knoblauch und Speck, dazu Bratkartoffeln", "cs": "Vepřová kotleta po nádudvarsku s česnekem a slaninou, s pečenými brambory", "en": "Pork loin Nádudvar style with garlic and bacon, roast potatoes"} } ] }
     ]
   },
 
