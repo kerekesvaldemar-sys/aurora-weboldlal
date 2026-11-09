@@ -431,6 +431,33 @@ body[data-view="foglalas"] .actionbar,body.sheet-open .actionbar{display:none}
 .lightbox[open]{animation:lb-in .35s cubic-bezier(.2,.7,.2,1)}
 @keyframes lb-in{from{opacity:0;transform:translateY(14px) scale(.98)}}
 .lightbox::backdrop{background:rgba(31,33,36,.9)}
+/* Limited offer (Libanapok) */
+.promo{background:var(--paper-2)}
+.promo-in{display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media (min-width:900px){.promo-in{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.promo h2{font-size:var(--fs-h2);margin-top:16px}
+.promo-lead{margin-top:16px;color:var(--mute);max-width:46ch}
+.promo-list{margin-top:24px;border-top:1px solid var(--ink)}
+.promo-list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.promo-list b{font-family:var(--font-display);font-weight:400;font-size:1.15rem}
+.promo-list .price{font-family:var(--font-display);font-weight:400;font-size:1.1rem}
+.promo .btn-row{margin-top:28px}
+.promo-art{display:grid;justify-items:center;gap:16px;text-align:center}
+.promo-art img,.ln-head img{width:min(340px,78%);height:auto}
+.ln-quote{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.2rem,1rem + .9vw,1.7rem);line-height:1.35;color:var(--burgundy);max-width:28ch}
+.ln-quote small{display:block;margin-top:8px;font-family:var(--font-body);font-style:normal;font-size:var(--fs-xs);color:var(--mute)}
+.hero-badge{display:inline-block;margin-bottom:18px;padding:8px 14px;border:1px solid rgba(255,255,255,.5);background:rgba(125,3,2,.72);color:#fff;font-size:var(--fs-sm);text-decoration:none;transition:background-color .2s}
+.hero-badge:hover{background:var(--burgundy)}
+.hero-badge b{font-weight:600;letter-spacing:.02em}
+.ln-head{display:grid;gap:28px;align-items:end}
+@media (min-width:900px){.ln-head{grid-template-columns:minmax(0,1fr) auto}.ln-head img{width:300px}}
+.ln-grid{display:grid;gap:clamp(44px,5vw,64px) clamp(32px,5vw,72px);padding-bottom:clamp(48px,7vw,96px)}
+@media (min-width:900px){.ln-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ln-sec h2{font-size:var(--fs-h3)}
+.ln-sub{margin-top:6px;font-size:var(--fs-xs);font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy)}
+.ln-sec ul{margin-top:14px;border-top:1px solid var(--ink)}
+.ln-end{margin-top:20px;color:var(--mute);max-width:52ch}
+.ln-quote-band{display:grid;justify-items:center;text-align:center}
 /* Survey pop-up */
 .survey{width:min(560px,100vw - 32px);max-height:calc(100dvh - 32px);padding:0;border:0;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px rgba(20,21,23,.35);overflow:auto}
 .survey[open]{animation:lb-in .35s cubic-bezier(.2,.7,.2,1)}
@@ -756,6 +783,7 @@ textarea.input{min-height:110px;resize:vertical}
   <div class="wrap sheet-in">
     <nav class="sheet-nav" aria-label="Fő navigáció" data-i18n-aria="nav.label">
       <a href="#fooldal" data-route="home" data-i18n="nav.home">Főoldal</a>
+      <a href="#libanapok" data-route="libanapok" data-promo hidden data-i18n="nav.liba">Libanapok</a>
       <a href="#etterem" data-route="etterem" data-i18n="nav.restaurant">Étterem</a>
       <a href="#etlap" data-route="etlap" data-i18n="nav.menu">Étlap</a>
       <a href="#szallas" data-route="szallas" data-i18n="nav.stay">Szállás</a>
@@ -785,6 +813,7 @@ textarea.input{min-height:110px;resize:vertical}
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-in">
       <div class="hero-copy">
+        <a class="hero-badge" href="#libanapok" data-promo hidden data-render="heroPromo"></a>
         <p class="hero-kicker" data-i18n="hero.eyebrow">Étterem &amp; Panzió · Bükfürdő</p>
         <h1 class="hero-title" id="heroTitle" data-i18n-em="hero.title">Magyar ízek, <em>lombok alatt</em></h1>
         <p class="hero-lead" data-i18n="hero.lead">Családi étterem és panzió Bükfürdőn: kortárs magyar ételek, lombos terasz, hetente megújuló menü és kényelmes, modern szállás.</p>
@@ -793,6 +822,25 @@ textarea.input{min-height:110px;resize:vertical}
           <a class="btn btn-primary" href="#foglalas" data-cta="table" data-i18n="cta.table">Asztalfoglalás</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section promo" aria-labelledby="promoTitle" data-promo hidden>
+    <div class="wrap promo-in">
+      <div class="rv">
+        <p class="eyebrow" data-render="lnWhen"></p>
+        <h2 id="promoTitle" data-i18n="ln.title">Libanapok 2026</h2>
+        <p class="promo-lead" data-i18n="ln.lead">Márton-napi ajánlat egy hétig.</p>
+        <ul class="promo-list" data-render="lnHighlights"></ul>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#libanapok" data-i18n="ln.cta">A Libanapok menü</a>
+          <a class="btn btn-line" href="#foglalas" data-cta="table" data-i18n="cta.table">Asztalfoglalás</a>
+        </div>
+      </div>
+      <figure class="promo-art rv">
+        <img src="img/libanapok-libak.webp" width="349" height="293" alt="" loading="lazy" decoding="async">
+        <figcaption class="ln-quote" data-render="lnQuote"></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1405,6 +1453,28 @@ textarea.input{min-height:110px;resize:vertical}
     </div>
   </section>
 </div>
+<!-- ======================= LIMITED OFFER (Libanapok) ======================= -->
+<div class="view" data-view="libanapok" hidden>
+  <section class="wrap page-head ln-head">
+    <div>
+      <p class="eyebrow" data-render="lnWhen"></p>
+      <h1 data-i18n="ln.title">Libanapok 2026</h1>
+      <p class="lead" data-i18n="ln.lead">Márton-napi ajánlat egy hétig.</p>
+      <div class="btn-row page-ctas" data-promo>
+        <a class="btn btn-primary" href="#foglalas" data-cta="table" data-i18n="cta.table">Asztalfoglalás</a>
+        <a class="btn btn-line" href="img/libanapok-2026.jpg" target="_blank" rel="noopener" data-i18n="ln.download">Az étlap képként</a>
+      </div>
+      <p class="ln-end" data-render="lnEnded" hidden></p>
+    </div>
+    <img src="img/libanapok-libak.webp" width="349" height="293" alt="" loading="lazy" decoding="async">
+  </section>
+  <section class="wrap ln-grid" data-render="lnMenu" aria-label="Libanapok menü" data-i18n-aria="ln.menuLabel"></section>
+  <section class="section band" data-promo>
+    <div class="wrap ln-quote-band"><p class="ln-quote" data-render="lnQuote"></p></div>
+  </section>
+  <p class="edit-hint" hidden><b>Szerkesztés:</b> az ajánlat a <code>SITE.promo</code> blokkban van (dátumok, fogások, árak). A megadott időszak után magától eltűnik.</p>
+</div>
+
 <!-- ======================= EVENTS (Rendezvények) ======================= -->
 <div class="view" data-view="rendezvenyek" hidden>
   <section class="wrap page-head">
@@ -1627,6 +1697,7 @@ textarea.input{min-height:110px;resize:vertical}
       <div class="foot-col">
         <h2 data-i18n="foot.pages">Oldalak</h2>
         <ul>
+          <li data-promo hidden><a href="#libanapok" data-i18n="nav.liba">Libanapok</a></li>
           <li><a href="#etterem" data-i18n="nav.restaurant">Étterem</a></li>
           <li><a href="#etlap" data-i18n="nav.menu">Étlap</a></li>
           <li><a href="#szallas" data-i18n="nav.stay">Szállás</a></li>
@@ -1907,6 +1978,273 @@ const SITE = {
   // THINGS TO DO — the "Látnivalók" page. town = in Bük / Bükfürdő, trips = day trips.
   // meta = the small line above the name (type, distance). url = official website (empty = no link).
   // Facts checked against visitbuk.hu (Bük's official tourism site) and the venues' own websites, Oct 2026.
+  // LIMITED OFFER — Libanapok 2026. Shows from "from" to "until" (Budapest time) on the home page (hero badge + band),
+  // in the mobile menu, the footer and on its own page (#libanapok); afterwards it disappears by itself.
+  // hl: true = listed on the home page. p = price in forint.
+  promo: {
+    "id": "libanapok-2026",
+    "from": "2026-11-09 00:00",
+    "until": "2026-11-15 23:59",
+    "quote": {
+      "hu": "„Aki Márton-napján libát nem eszik, az egész éven át éhezik!”",
+      "de": "„Wer am Martinstag keine Gans isst, hungert das ganze Jahr!“",
+      "cs": "„Kdo na svatého Martina husu neji, bude hladovět na celý rok.“",
+      "en": "“One who does not eat a goose on Martin's day will starve all next year.”"
+    },
+    "sections": [
+      {
+        "t": {
+          "hu": "Levesek",
+          "de": "Suppen",
+          "cs": "Polévky",
+          "en": "Soups"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Libahúsleves maceszgombóccal",
+              "de": "Gänsefleischsuppe mit Matzenknödeln",
+              "cs": "Husí vývar s macesovými knedlíčky",
+              "en": "Goose broth with matzo dumplings"
+            },
+            "d": {
+              "hu": "Csészében",
+              "de": "In der Tasse serviert",
+              "cs": "Podávaný v šálku",
+              "en": "Served in a cup"
+            },
+            "p": 1390,
+            "hl": true
+          },
+          {
+            "n": {
+              "hu": "Tárkonyos libaraguleves",
+              "de": "Gänseragoutsuppe mit Estragon",
+              "cs": "Husí ragú polévka s estragonem",
+              "en": "Tarragon goose ragout soup"
+            },
+            "d": {
+              "hu": "Mini topfban, 0,4 l",
+              "de": "Im Mini-Topf, 0,4 l",
+              "cs": "V malém hrnci, 0,4 l",
+              "en": "Served in a mini pot, 0.4 l"
+            },
+            "p": 1890
+          }
+        ]
+      },
+      {
+        "t": {
+          "hu": "Libacomb",
+          "de": "Gänsekeule",
+          "cs": "Husí stehno",
+          "en": "Goose leg"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Ropogós libacomb",
+              "de": "Knusprige Gänsekeule",
+              "cs": "Křupavé husí stehno",
+              "en": "Crispy goose leg"
+            },
+            "d": {
+              "hu": "Hagymás törtburgonyával, aszalt szilvás párolt káposztával",
+              "de": "Mit Stampfkartoffeln mit Zwiebeln und geschmortem Kraut mit Dörrpflaumen",
+              "cs": "Se šťouchanými bramborami s cibulkou a dušeným zelím se sušenými švestkami",
+              "en": "With onion crushed potatoes and braised cabbage with prunes"
+            },
+            "p": 7890,
+            "hl": true
+          },
+          {
+            "n": {
+              "hu": "Szatmári ropogós libacomb",
+              "de": "Knusprige Gänsekeule nach Szatmárer Art",
+              "cs": "Křupavé husí stehno po szatmársku",
+              "en": "Crispy goose leg, Szatmár style"
+            },
+            "d": {
+              "hu": "Pálinkás szilvaszósszal és rösztivel",
+              "de": "Mit Pflaumensauce, verfeinert mit Pálinka, und Kartoffelrösti",
+              "cs": "Se švestkovou omáčkou s pálenkou a bramborovými rösti",
+              "en": "With plum sauce enriched with pálinka and potato rösti"
+            },
+            "p": 7890
+          }
+        ]
+      },
+      {
+        "t": {
+          "hu": "Libamell",
+          "de": "Gänsebrust",
+          "cs": "Husí prsa",
+          "en": "Goose breast"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Ropogós libamell",
+              "de": "Knusprige Gänsebrust",
+              "cs": "Křupavá husí prsa",
+              "en": "Crispy goose breast"
+            },
+            "d": {
+              "hu": "Hagymás törtburgonyával, aszalt szilvás párolt káposztával",
+              "de": "Mit Stampfkartoffeln mit Zwiebeln und geschmortem Kraut mit Dörrpflaumen",
+              "cs": "Se šťouchanými bramborami s cibulkou a dušeným zelím se sušenými švestkami",
+              "en": "With onion crushed potatoes and braised cabbage with prunes"
+            },
+            "p": 7890
+          },
+          {
+            "n": {
+              "hu": "Részeges libamell",
+              "de": "Beschwipste Gänsebrust",
+              "cs": "Opilá husí prsa",
+              "en": "Tipsy goose breast"
+            },
+            "d": {
+              "hu": "Pálinkás szilvaszósszal és rösztivel",
+              "de": "Mit Pflaumensauce, verfeinert mit Pálinka, und Kartoffelrösti",
+              "cs": "Se švestkovou omáčkou s pálenkou a bramborovými rösti",
+              "en": "With plum sauce enriched with pálinka and potato rösti"
+            },
+            "p": 7890
+          },
+          {
+            "n": {
+              "hu": "Ropogós libamell salátával",
+              "de": "Knusprige Gänsebrust mit Salat",
+              "cs": "Křupavá husí prsa se salátem",
+              "en": "Crispy goose breast with salad"
+            },
+            "d": {
+              "hu": "Kevert zöldsalátákkal, gránátalmával, fügével és édesburgonya-hasábokkal",
+              "de": "Mit gemischten Blattsalaten, Granatapfel, Feigen und Süßkartoffelpommes",
+              "cs": "S míchanými listovými saláty, granátovým jablkem, fíky a batátovými hranolky",
+              "en": "With mixed leaf salads, pomegranate, figs and sweet potato fries"
+            },
+            "p": 7890
+          }
+        ]
+      },
+      {
+        "t": {
+          "hu": "Libalakomák",
+          "de": "Gänseplatten",
+          "cs": "Husí hostiny",
+          "en": "Goose feasts"
+        },
+        "sub": {
+          "hu": "Két személyre",
+          "de": "Für zwei",
+          "cs": "Pro dva",
+          "en": "For two"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Márton-napi libalakoma libamájjal",
+              "de": "Martins-Gänseplatte mit Gänseleber",
+              "cs": "Svatomartinská husí hostina s játry",
+              "en": "St. Martin's goose feast with goose liver"
+            },
+            "d": {
+              "hu": "Ropogós libacomb és libamell, roston sült libamáj lyoni hagymával, hagymás törtburgonya, aszalt szilvás párolt lilakáposzta és pálinkás szilvaszósz",
+              "de": "Knusprige Gänsekeule und Gänsebrust, gegrillte Gänseleber mit Lyoner Zwiebeln, Stampfkartoffeln mit Zwiebeln, geschmorter Rotkohl mit Dörrpflaumen und Pflaumensauce mit Pálinka",
+              "cs": "Křupavé husí stehno a husí prsa, grilovaná husí játra s cibulkou po lyonsku, šťouchané brambory s cibulkou, dušené červené zelí se sušenými švestkami a švestková omáčka s pálenkou",
+              "en": "Crispy goose leg and breast, grilled goose liver with Lyonnaise onions, onion crushed potatoes, braised red cabbage with prunes and plum sauce with pálinka"
+            },
+            "p": 19900
+          },
+          {
+            "n": {
+              "hu": "Márton-napi libalakoma",
+              "de": "Martins-Gänseplatte",
+              "cs": "Svatomartinská husí hostina",
+              "en": "St. Martin's goose feast"
+            },
+            "d": {
+              "hu": "Ropogós libacomb és libamell, hagymás törtburgonya, aszalt szilvás párolt lilakáposzta, röszti és pálinkás szilvaszósz",
+              "de": "Knusprige Gänsekeule und Gänsebrust, Stampfkartoffeln mit Zwiebeln, geschmorter Rotkohl mit Dörrpflaumen, Kartoffelrösti und Pflaumensauce mit Pálinka",
+              "cs": "Křupavé husí stehno a husí prsa, šťouchané brambory s cibulkou, dušené červené zelí se sušenými švestkami, bramborové rösti a švestková omáčka s pálenkou",
+              "en": "Crispy goose leg and breast, onion crushed potatoes, braised red cabbage with prunes, potato rösti and plum sauce with pálinka"
+            },
+            "p": 14990,
+            "hl": true
+          }
+        ]
+      },
+      {
+        "t": {
+          "hu": "Márton Burger",
+          "de": "Martins-Burger",
+          "cs": "Svatomartinský burger",
+          "en": "St. Martin's Burger"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Márton Burger",
+              "de": "Martins-Burger",
+              "cs": "Svatomartinský burger",
+              "en": "St. Martin's Burger"
+            },
+            "d": {
+              "hu": "Angus marhahúspogácsával, grillezett libamájjal, lyoni hagymával, édesburgonyával és koktélszósszal",
+              "de": "Mit Angus-Rindfleischpatty, gegrillter Gänseleber, Lyoner Zwiebeln, Süßkartoffeln und Cocktailsauce",
+              "cs": "S hovězí plackou Angus, grilovanými husími játry, cibulkou po lyonsku, batáty a koktejlovou omáčkou",
+              "en": "With an Angus beef patty, grilled goose liver, Lyonnaise onions, sweet potatoes and cocktail sauce"
+            },
+            "p": 6890,
+            "hl": true
+          }
+        ]
+      },
+      {
+        "t": {
+          "hu": "Desszertek",
+          "de": "Desserts",
+          "cs": "Dezerty",
+          "en": "Desserts"
+        },
+        "items": [
+          {
+            "n": {
+              "hu": "Mascarponés gesztenyekrémmel töltött palacsinta",
+              "de": "Palatschinke mit Mascarpone-Kastaniencreme",
+              "cs": "Palačinka s kaštanovým krémem a mascarpone",
+              "en": "Crêpe filled with mascarpone chestnut cream"
+            },
+            "d": {
+              "hu": "Rumos meggyszósszal",
+              "de": "Mit Rum-Sauerkirschsauce",
+              "cs": "S rumovou višňovou omáčkou",
+              "en": "With rum and sour cherry sauce"
+            },
+            "p": 2290
+          },
+          {
+            "n": {
+              "hu": "Lúdláb desszert",
+              "de": "Lúdláb-Dessert",
+              "cs": "Dezert Lúdláb",
+              "en": "Lúdláb dessert"
+            },
+            "d": {
+              "hu": "Belga csokoládéval",
+              "de": "Mit belgischer Schokolade",
+              "cs": "S belgickou čokoládou",
+              "en": "With Belgian chocolate"
+            },
+            "p": 2290
+          }
+        ]
+      }
+    ]
+  },
+
   // UNIVERSITY SURVEY POP-UP — opens once on a visitor's first visit; closing it (X, "Most nem", Esc) or choosing a language hides it for good on that browser.
   // enabled: false switches it off. until: last day it shows ("2026-12-15"), empty = no end date.
   // id: change it (e.g. "bukfurdo-2") to show the pop-up again to everyone. A language with on: false is not shown (e.g. while its form is unpublished).
@@ -2302,6 +2640,10 @@ const I18N = {
   "map.eyebrow": "Megközelítés", "map.appleDirections": "Útvonaltervezés Apple Térképpel", "map.appleOpen": "Megnyitás az Apple Térképen", "map.googleDirections": "Útvonal a Google Térképen", "map.activate": "Koppintson a térkép mozgatásához", "map.region": "Interaktív térkép – Aurora Étterem & Panzió",
   "title.home": "Aurora Étterem & Panzió – Bükfürdő", "title.etterem": "Étterem és étlap", "title.heti-menu": "Heti menü", "title.szallas": "Szállás",
   "title.galeria": "Galéria", "title.kapcsolat": "Kapcsolat", "title.foglalas": "Foglalás",
+   "nav.liba": "Libanapok", "title.libanapok": "Libanapok 2026", "ln.title": "Libanapok 2026", "ln.limited": "Limitált ajánlat", "ln.badge": "Libanapok",
+  "ln.lead": "Márton-napi ajánlat egy hétig: libaleves, ropogós libacomb és libamell, libalakoma két személyre, Márton Burger és desszertek.",
+  "ln.cta": "A Libanapok menü", "ln.download": "Az étlap képként", "ln.menuLabel": "Libanapok menü",
+  "ln.ended": "A Libanapok 2026. november 15-én véget ért. Köszönjük, hogy velünk ünnepelt!",
   "nav.events": "Rendezvények", "nav.sights": "Látnivalók", "title.rendezvenyek": "Rendezvények", "title.latnivalok": "Látnivalók a környéken",
   "ev.eyebrow": "Rendezvények", "ev.title": "Ünnepeljen nálunk",
   "ev.lead": "Születésnap, családi ünnep, céges vacsora vagy évzáró: az étteremben és jó időben a lombos teraszon zártkörű rendezvényeket is vállalunk, az alkalomhoz összeállított menüvel.",
@@ -2423,6 +2765,10 @@ const I18N = {
   "map.eyebrow": "Anfahrt", "map.appleDirections": "Route mit Apple Karten", "map.appleOpen": "In Apple Karten öffnen", "map.googleDirections": "Route in Google Maps", "map.activate": "Tippen, um die Karte zu bewegen", "map.region": "Interaktive Karte – Aurora Restaurant & Pension",
   "title.home": "Aurora Restaurant & Pension – Bükfürdő", "title.etterem": "Restaurant & Speisekarte", "title.heti-menu": "Wochenmenü", "title.szallas": "Unterkunft",
   "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Reservierung",
+   "nav.liba": "Martinsgans", "title.libanapok": "Martinsgans-Tage 2026", "ln.title": "Martinsgans-Tage 2026", "ln.limited": "Nur für kurze Zeit", "ln.badge": "Martinsgans",
+  "ln.lead": "Martinsgans eine Woche lang: Gänsesuppen, knusprige Gänsekeule und Gänsebrust, Gänseplatten für zwei, Martins-Burger und Desserts.",
+  "ln.cta": "Zur Martinsgans-Karte", "ln.download": "Karte als Bild", "ln.menuLabel": "Martinsgans-Karte",
+  "ln.ended": "Die Martinsgans-Tage sind am 15. November 2026 zu Ende gegangen. Danke, dass Sie mit uns gefeiert haben!",
   "nav.events": "Feiern", "nav.sights": "Umgebung", "title.rendezvenyek": "Feiern und Veranstaltungen", "title.latnivalok": "Ausflugsziele in der Umgebung",
   "ev.eyebrow": "Feiern & Events", "ev.title": "Feiern Sie bei uns",
   "ev.lead": "Geburtstag, Familienfeier, Firmenessen oder Jahresabschluss: Im Restaurant und bei schönem Wetter auf der Terrasse im Grünen richten wir auch geschlossene Gesellschaften aus – mit einem Menü, das wir auf den Anlass abstimmen.",
@@ -2544,6 +2890,10 @@ const I18N = {
   "map.eyebrow": "Jak se k nám dostanete", "map.appleDirections": "Trasa v Mapách Apple", "map.appleOpen": "Otevřít v Mapách Apple", "map.googleDirections": "Trasa v Mapách Google", "map.activate": "Klepnutím mapu aktivujete", "map.region": "Interaktivní mapa – Aurora Restaurace & Penzion",
   "title.home": "Aurora Restaurace & Penzion – Bükfürdő", "title.etterem": "Restaurace a jídelní lístek", "title.heti-menu": "Týdenní menu", "title.szallas": "Ubytování",
   "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Rezervace",
+   "nav.liba": "Husí dny", "title.libanapok": "Svatomartinské husí dny 2026", "ln.title": "Svatomartinské husí dny 2026", "ln.limited": "Limitovaná nabídka", "ln.badge": "Husí dny",
+  "ln.lead": "Svatomartinská nabídka na jeden týden: husí polévky, křupavé husí stehno a prsa, husí hostiny pro dva, svatomartinský burger a dezerty.",
+  "ln.cta": "Nabídka husích dnů", "ln.download": "Nabídka jako obrázek", "ln.menuLabel": "Nabídka husích dnů",
+  "ln.ended": "Svatomartinské husí dny skončily 15. listopadu 2026. Děkujeme, že jste slavili s námi!",
   "nav.events": "Oslavy", "nav.sights": "Okolí", "title.rendezvenyek": "Oslavy a firemní akce", "title.latnivalok": "Tipy na výlety v okolí",
   "ev.eyebrow": "Oslavy a akce", "ev.title": "Oslavte to u nás",
   "ev.lead": "Narozeniny, rodinná oslava, firemní večeře nebo konec roku: v restauraci a za pěkného počasí na terase v zeleni pořádáme i uzavřené akce s menu sestaveným na míru.",
@@ -2665,6 +3015,10 @@ const I18N = {
   "map.eyebrow": "Getting here", "map.appleDirections": "Directions in Apple Maps", "map.appleOpen": "Open in Apple Maps", "map.googleDirections": "Directions in Google Maps", "map.activate": "Tap to move the map", "map.region": "Interactive map – Aurora Restaurant & Apartments",
   "title.home": "Aurora Restaurant & Apartments – Bükfürdő", "title.etterem": "Restaurant & menu", "title.heti-menu": "Weekly menu", "title.szallas": "Accommodation",
   "title.galeria": "Gallery", "title.kapcsolat": "Contact", "title.foglalas": "Booking",
+   "nav.liba": "Goose Days", "title.libanapok": "St. Martin's Goose Days 2026", "ln.title": "St. Martin's Goose Days 2026", "ln.limited": "Limited time", "ln.badge": "Goose Days",
+  "ln.lead": "St. Martin's Day specials for one week: goose soups, crispy goose leg and breast, goose feasts for two, the St. Martin's Burger and desserts.",
+  "ln.cta": "See the Goose Days menu", "ln.download": "Menu as an image", "ln.menuLabel": "Goose Days menu",
+  "ln.ended": "St. Martin's Goose Days ended on 15 November 2026. Thank you for celebrating with us!",
   "nav.events": "Events", "nav.sights": "Explore", "title.rendezvenyek": "Private events", "title.latnivalok": "Things to do nearby",
   "ev.eyebrow": "Events", "ev.title": "Celebrate with us",
   "ev.lead": "Birthdays, family celebrations, company dinners or end-of-year parties: we host private events in the restaurant and, in good weather, on our leafy terrace, with a menu put together for the occasion.",
@@ -3761,7 +4115,7 @@ matchMedia("(min-width:1260px)").addEventListener("change", (m) => { if (m.match
 $("#skipLink").addEventListener("click", (e) => { e.preventDefault(); const h = $(".view:not([hidden]) h1") || $("#main"); h.setAttribute("tabindex", "-1"); h.focus(); });
 
 /* ---------- Router ---------- */
-const HASH_TO_VIEW = { "": "home", "fooldal": "home", "etterem": "etterem", "etlap": "etlap", "heti-menu": "heti-menu", "szallas": "szallas", "galeria": "galeria", "kapcsolat": "kapcsolat", "foglalas": "foglalas", "szallasfoglalas": "foglalas", "hetvege-elonezet": "home", "palyazatok": "palyazatok", "impresszum": "impresszum", "adatkezeles": "adatkezeles", "rendezvenyek": "rendezvenyek", "latnivalok": "latnivalok" };
+const HASH_TO_VIEW = { "": "home", "fooldal": "home", "etterem": "etterem", "etlap": "etlap", "heti-menu": "heti-menu", "szallas": "szallas", "galeria": "galeria", "kapcsolat": "kapcsolat", "foglalas": "foglalas", "szallasfoglalas": "foglalas", "hetvege-elonezet": "home", "palyazatok": "palyazatok", "impresszum": "impresszum", "adatkezeles": "adatkezeles", "rendezvenyek": "rendezvenyek", "libanapok": "libanapok", "latnivalok": "latnivalok" };
 let currentView = null, firstRoute = true;
 function updateTitle() {
   const v = currentView || "home";
@@ -3815,6 +4169,31 @@ document.addEventListener("click", (e) => {
 window.addEventListener("hashchange", () => route());
 window.addEventListener("popstate", () => route());
 
+/* ---------- Limited offer (Libanapok) ---------- */
+function promoState() {
+  const P = SITE.promo || {};
+  if (!P.from || !P.until) return "none";
+  const now = bpNow();
+  return now < normTime(P.from, "00:00") ? "upcoming" : now > normTime(P.until, "23:59") ? "over" : "live";
+}
+function renderPromo() {
+  const P = SITE.promo || {}, st = promoState();
+  $$("[data-promo]").forEach((el) => (el.hidden = st !== "live"));
+  if (st === "none") return;
+  const when = rangeText(dateOf(P.from), dateOf(P.until));
+  render("lnWhen", esc(t("ln.limited") + " · " + when));
+  render("heroPromo", `<b>${esc(t("ln.badge"))}</b> · ${esc(when)} <span aria-hidden="true">→</span>`);
+  const secs = P.sections || [];
+  render("lnHighlights", secs.flatMap((sec) => (sec.items || []).filter((it) => it.hl).map((it) =>
+    `<li><span><b>${esc(L(it.n))}</b>${sec.sub ? ` <span class="mi-size">${esc(L(sec.sub))}</span>` : ""}</span>${priceHTML(it)}</li>`)).join(""));
+  render("lnMenu", st === "over" ? "" : secs.map((sec) => `<div class="ln-sec rv"><h2>${esc(L(sec.t))}</h2>${sec.sub ? `<p class="ln-sub">${esc(L(sec.sub))}</p>` : ""}<ul>${(sec.items || []).map((it) =>
+    `<li class="mi"><div class="mi-main"><p class="mi-name">${esc(L(it.n))}</p>${L(it.d) ? `<p class="mi-desc">${esc(L(it.d))}</p>` : ""}</div>${priceHTML(it)}</li>`).join("")}</ul></div>`).join(""));
+  const q = P.quote || {};
+  render("lnQuote", q.hu ? `<span lang="hu">${esc(q.hu)}</span>${lang !== "hu" && L(q) !== q.hu ? `<small>${esc(L(q))}</small>` : ""}` : "");
+  const end = $('[data-render="lnEnded"]');
+  if (end) { end.hidden = st !== "over"; end.innerHTML = st === "over" ? `${esc(t("ln.ended"))} <a class="tlink" href="#etlap">${esc(t("nav.menu"))}</a>` : ""; }
+}
+
 /* ---------- University survey pop-up ---------- */
 function surveyForms() { return ((SITE.survey || {}).forms || []).filter((f) => f.on !== false && f.url); }
 function surveyLive() {
@@ -3852,6 +4231,7 @@ function renderAll() {
   if (tCal) { tCal.render(); sCal.render(); updateCalSums(); }
   renderMaps();
   renderSurvey();
+  renderPromo();
 }
 function setLang(l, save) {
   if (!I18N[l]) l = "hu";
