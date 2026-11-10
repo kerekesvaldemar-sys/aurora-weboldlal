@@ -23,3 +23,9 @@
   from = "/cz/*"
   to = "/"
   status = 301
+
+# Short address for the university survey page (Facebook, QR codes): aurora.co.hu/kerdoiv
+[[redirects]]
+  from = "/kerdoiv"
+  to = "/kerdoiv.html"
+  status = 200
