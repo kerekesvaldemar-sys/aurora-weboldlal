@@ -443,7 +443,11 @@ body[data-view="foglalas"] .actionbar,body.sheet-open .actionbar{display:none}
 .promo-list .price{font-family:var(--font-display);font-weight:400;font-size:1.1rem}
 .promo .btn-row{margin-top:28px}
 .promo-art{display:grid;justify-items:center;gap:16px;text-align:center}
-.promo-art img,.ln-head img{width:min(340px,78%);height:auto}
+.ln-head img{width:min(340px,78%);height:auto}
+.promo-art .photo{--ar:4/5;width:100%}
+.ln-photos{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));padding-bottom:clamp(44px,6vw,80px)}
+.ln-photos .photo{--ar:4/5}
+@media (min-width:900px){.ln-photos{gap:16px}.ln-photos .photo{--ar:1/1}}
 .ln-quote{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:clamp(1.2rem,1rem + .9vw,1.7rem);line-height:1.35;color:var(--burgundy);max-width:28ch}
 .ln-quote small{display:block;margin-top:8px;font-family:var(--font-body);font-style:normal;font-size:var(--fs-xs);color:var(--mute)}
 .hero-badge{display:inline-block;margin-bottom:18px;padding:8px 14px;border:1px solid rgba(255,255,255,.5);background:rgba(125,3,2,.72);color:#fff;font-size:var(--fs-sm);text-decoration:none;transition:background-color .2s}
@@ -838,7 +842,7 @@ textarea.input{min-height:110px;resize:vertical}
         </div>
       </div>
       <figure class="promo-art rv">
-        <img src="img/libanapok-libak.webp" width="349" height="293" alt="" loading="lazy" decoding="async">
+        <div class="photo" data-img="lnFeast" data-ar="4:5" data-sizes="(min-width:900px) 38vw, 100vw"></div>
         <figcaption class="ln-quote" data-render="lnQuote"></figcaption>
       </figure>
     </div>
@@ -1468,6 +1472,10 @@ textarea.input{min-height:110px;resize:vertical}
     </div>
     <img src="img/libanapok-libak.webp" width="349" height="293" alt="" loading="lazy" decoding="async">
   </section>
+  <section class="wrap ln-photos" data-promo aria-label="Fotók" data-i18n-aria="ln.photosLabel">
+    <figure class="photo rv-photo" data-img="lnFeast" data-ar="4:5" data-sizes="(min-width:900px) 45vw, 50vw"></figure>
+    <figure class="photo rv-photo" data-img="lnPlate" data-ar="4:5" data-sizes="(min-width:900px) 45vw, 50vw"></figure>
+  </section>
   <section class="wrap ln-grid" data-render="lnMenu" aria-label="Libanapok menü" data-i18n-aria="ln.menuLabel"></section>
   <section class="section band" data-promo>
     <div class="wrap ln-quote-band"><p class="ln-quote" data-render="lnQuote"></p></div>
@@ -1889,6 +1897,8 @@ const SITE = {
     restaurant1:     { src: "img/aurora-sult-hus-galuska-941.webp", srcset: "img/aurora-sult-hus-galuska-800.webp 800w, img/aurora-sult-hus-galuska-941.webp 941w", pos: "50% 72%", alt: { hu: "Sült hús pirított galuskával, gyümölccsel és mártással", de: "Gebratenes Fleisch mit gerösteten Nockerln, Obst und Sauce", cs: "Pečené maso s opečenými noky, ovocem a omáčkou", en: "Roast meat with pan-fried dumplings, fruit and jus" } },
     restaurant2:     { src: "img/aurora-halas-eloetel-1449.webp", srcset: "img/aurora-halas-eloetel-800.webp 800w, img/aurora-halas-eloetel-1449.webp 1449w", pos: "50% 62%", alt: { hu: "Halas előétel uborkaszalaggal és pácolt hagymával", de: "Fischvorspeise mit Gurkenstreifen und eingelegten Zwiebeln", cs: "Rybí předkrm s okurkovými nudličkami a nakládanou cibulí", en: "Fish starter with cucumber ribbons and pickled onion" } },
     stay1:           { src: "img/aurora-etterem-panzio-este-1142.webp", srcset: "img/aurora-etterem-panzio-este-800.webp 800w, img/aurora-etterem-panzio-este-1142.webp 1142w", pos: "50% 40%", alt: { hu: "Az Aurora Étterem & Panzió bejárata és terasza este", de: "Eingang und Terrasse des Aurora am Abend", cs: "Vchod a terasa Aurory večer", en: "Aurora's entrance and terrace in the evening" } },
+    lnFeast:         { src: "img/libanapok-lakoma-1200.webp", srcset: "img/libanapok-lakoma-800.webp 800w, img/libanapok-lakoma-1200.webp 1200w", pos: "50% 55%", alt: { hu: "Ropogós libacomb és szeletelt libamell törtburgonyával, lilakáposztával és rösztivel, mellette szósz", de: "Knusprige Gänsekeule und geschnittene Gänsebrust mit Stampfkartoffeln, Rotkraut und Rösti, daneben Sauce", cs: "Křupavé husí stehno a nakrájená husí prsa se šťouchanými bramborami, červeným zelím a rösti, vedle omáčka", en: "Crispy goose leg and sliced goose breast with crushed potatoes, red cabbage and rösti, with sauce on the side" } },
+    lnPlate:         { src: "img/libanapok-tal-1200.webp", srcset: "img/libanapok-tal-800.webp 800w, img/libanapok-tal-1200.webp 1200w", pos: "50% 50%", alt: { hu: "Libacomb, libamell, röszti és lilakáposzta gránátalmával egy tálon", de: "Gänsekeule, Gänsebrust, Rösti und Rotkraut mit Granatapfel auf einer Platte", cs: "Husí stehno, husí prsa, rösti a červené zelí s granátovým jablkem na talíři", en: "Goose leg, goose breast, rösti and red cabbage with pomegranate on one platter" } },
     stay2:           { src: "", alt: { hu: "Szoba", de: "Zimmer", cs: "Pokoj", en: "Room" } },
     stay3:           { src: "", alt: { hu: "Fürdőszoba", de: "Badezimmer", cs: "Koupelna", en: "Bathroom" } },
     stayBook:        { src: "", alt: { hu: "Szoba a panzióban", de: "Zimmer in der Pension", cs: "Pokoj v penzionu", en: "A room at the guesthouse" } },
@@ -2642,7 +2652,7 @@ const I18N = {
   "title.galeria": "Galéria", "title.kapcsolat": "Kapcsolat", "title.foglalas": "Foglalás",
    "nav.liba": "Libanapok", "title.libanapok": "Libanapok 2026", "ln.title": "Libanapok 2026", "ln.limited": "Limitált ajánlat", "ln.badge": "Libanapok",
   "ln.lead": "Márton-napi ajánlat egy hétig: libaleves, ropogós libacomb és libamell, libalakoma két személyre, Márton Burger és desszertek.",
-  "ln.cta": "A Libanapok menü", "ln.download": "Az étlap képként", "ln.menuLabel": "Libanapok menü",
+  "ln.cta": "A Libanapok menü", "ln.download": "Az étlap képként", "ln.menuLabel": "Libanapok menü", "ln.photosLabel": "Fotók a Libanapok ételeiről",
   "ln.ended": "A Libanapok 2026. november 15-én véget ért. Köszönjük, hogy velünk ünnepelt!",
   "nav.events": "Rendezvények", "nav.sights": "Látnivalók", "title.rendezvenyek": "Rendezvények", "title.latnivalok": "Látnivalók a környéken",
   "ev.eyebrow": "Rendezvények", "ev.title": "Ünnepeljen nálunk",
@@ -2767,7 +2777,7 @@ const I18N = {
   "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Reservierung",
    "nav.liba": "Martinsgans", "title.libanapok": "Martinsgans-Tage 2026", "ln.title": "Martinsgans-Tage 2026", "ln.limited": "Nur für kurze Zeit", "ln.badge": "Martinsgans",
   "ln.lead": "Martinsgans eine Woche lang: Gänsesuppen, knusprige Gänsekeule und Gänsebrust, Gänseplatten für zwei, Martins-Burger und Desserts.",
-  "ln.cta": "Zur Martinsgans-Karte", "ln.download": "Karte als Bild", "ln.menuLabel": "Martinsgans-Karte",
+  "ln.cta": "Zur Martinsgans-Karte", "ln.download": "Karte als Bild", "ln.menuLabel": "Martinsgans-Karte", "ln.photosLabel": "Fotos der Martinsgans-Gerichte",
   "ln.ended": "Die Martinsgans-Tage sind am 15. November 2026 zu Ende gegangen. Danke, dass Sie mit uns gefeiert haben!",
   "nav.events": "Feiern", "nav.sights": "Umgebung", "title.rendezvenyek": "Feiern und Veranstaltungen", "title.latnivalok": "Ausflugsziele in der Umgebung",
   "ev.eyebrow": "Feiern & Events", "ev.title": "Feiern Sie bei uns",
@@ -2892,7 +2902,7 @@ const I18N = {
   "title.galeria": "Galerie", "title.kapcsolat": "Kontakt", "title.foglalas": "Rezervace",
    "nav.liba": "Husí dny", "title.libanapok": "Svatomartinské husí dny 2026", "ln.title": "Svatomartinské husí dny 2026", "ln.limited": "Limitovaná nabídka", "ln.badge": "Husí dny",
   "ln.lead": "Svatomartinská nabídka na jeden týden: husí polévky, křupavé husí stehno a prsa, husí hostiny pro dva, svatomartinský burger a dezerty.",
-  "ln.cta": "Nabídka husích dnů", "ln.download": "Nabídka jako obrázek", "ln.menuLabel": "Nabídka husích dnů",
+  "ln.cta": "Nabídka husích dnů", "ln.download": "Nabídka jako obrázek", "ln.menuLabel": "Nabídka husích dnů", "ln.photosLabel": "Fotografie jídel z husích dnů",
   "ln.ended": "Svatomartinské husí dny skončily 15. listopadu 2026. Děkujeme, že jste slavili s námi!",
   "nav.events": "Oslavy", "nav.sights": "Okolí", "title.rendezvenyek": "Oslavy a firemní akce", "title.latnivalok": "Tipy na výlety v okolí",
   "ev.eyebrow": "Oslavy a akce", "ev.title": "Oslavte to u nás",
@@ -3017,7 +3027,7 @@ const I18N = {
   "title.galeria": "Gallery", "title.kapcsolat": "Contact", "title.foglalas": "Booking",
    "nav.liba": "Goose Days", "title.libanapok": "St. Martin's Goose Days 2026", "ln.title": "St. Martin's Goose Days 2026", "ln.limited": "Limited time", "ln.badge": "Goose Days",
   "ln.lead": "St. Martin's Day specials for one week: goose soups, crispy goose leg and breast, goose feasts for two, the St. Martin's Burger and desserts.",
-  "ln.cta": "See the Goose Days menu", "ln.download": "Menu as an image", "ln.menuLabel": "Goose Days menu",
+  "ln.cta": "See the Goose Days menu", "ln.download": "Menu as an image", "ln.menuLabel": "Goose Days menu", "ln.photosLabel": "Photos of the Goose Days dishes",
   "ln.ended": "St. Martin's Goose Days ended on 15 November 2026. Thank you for celebrating with us!",
   "nav.events": "Events", "nav.sights": "Explore", "title.rendezvenyek": "Private events", "title.latnivalok": "Things to do nearby",
   "ev.eyebrow": "Events", "ev.title": "Celebrate with us",
