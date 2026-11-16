@@ -1351,7 +1351,7 @@ textarea.input{min-height:110px;resize:vertical}
           <h2 data-i18n="terrace.eyebrow">Terasz</h2>
           <p data-i18n="bk.terraceText">Jó időben a teraszon is terítünk. Jelölje a foglalásnál, ha kint ülne.</p>
         </div>
-        <p class="edit-hint" hidden><b>Szerkesztés:</b> külső asztalfoglaló rendszer linkje: <code>SITE.booking.table.externalUrl</code>. Ha a kérések közvetlenül hozzátok érkezzenek (pl. Formspree vagy saját szerver), add meg a <code>SITE.booking.table.endpoint</code> címet. Enélkül a vendég telefonon, SMS-ben vagy e-mailben küldi el az elkészült kérést.</p>
+        <p class="edit-hint" hidden><b>Szerkesztés:</b> külső asztalfoglaló rendszer linkje: <code>SITE.booking.table.externalUrl</code>. A kérések a Web3Forms-on át e-mailben érkeznek: a kulcs a <code>SITE.booking.web3formsKey</code> helyre kerül (más szolgáltatónál a <code>SITE.booking.table.endpoint</code> címet add meg). Enélkül a vendég telefonon, SMS-ben vagy e-mailben küldi el az elkészült kérést.</p>
       </aside>
     </div>
 
@@ -1646,7 +1646,7 @@ textarea.input{min-height:110px;resize:vertical}
       <div><dt>Levelezési cím</dt><dd>9740 Bükfürdő, Rózsa utca 1–2.</dd></div>
       <div><dt>Telefon</dt><dd><a href="tel:+36202948430">+36 20 294 8430</a></dd></div>
       <div><dt>E-mail</dt><dd><a href="mailto:info@aurora.co.hu">info@aurora.co.hu</a></dd></div>
-      <div><dt>Tárhelyszolgáltató</dt><dd>Netlify, Inc. · 101 2nd Street, San Francisco, CA 94105, USA · <a href="mailto:privacy@netlify.com">privacy@netlify.com</a></dd></div>
+      <div><dt>Tárhelyszolgáltató</dt><dd>GitHub, Inc. (GitHub Pages) · 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA · <a href="mailto:privacy@github.com">privacy@github.com</a></dd></div>
     </dl>
   </section>
 </div>
@@ -1660,7 +1660,7 @@ textarea.input{min-height:110px;resize:vertical}
   </section>
   <section class="wrap legal-sec" lang="hu">
     <div class="prose">
-      <p class="muted">Hatályos: 2026. október 28-tól</p>
+      <p class="muted">Hatályos: 2026. november 16-tól</p>
       <p>Ez a tájékoztató azt írja le, milyen személyes adatokat kezelünk, amikor Ön az aurora.co.hu weboldalt használja, illetve foglalást vagy ajánlatot kér tőlünk. Az adatkezelés az Európai Unió általános adatvédelmi rendelete (GDPR) és az információs önrendelkezési jogról szóló 2011. évi CXII. törvény (Infotv.) alapján történik.</p>
 
       <h2>1. Az adatkezelő</h2>
@@ -1669,11 +1669,12 @@ textarea.input{min-height:110px;resize:vertical}
       E-mail: <a href="mailto:info@aurora.co.hu">info@aurora.co.hu</a> · Telefon: <a href="tel:+36202948430">+36 20 294 8430</a></p>
 
       <h2>2. Asztalfoglalás és szállásajánlat-kérés</h2>
-      <p>A weboldal foglalási űrlapja nem küld adatot szerverre, és a weboldal nem tárolja a beírt adatokat. Az űrlap egy üzenetet állít össze (név, telefonszám vagy e-mail-cím, dátum és időpont, létszám, megjegyzés), amelyet Ön a saját eszközéről küld el nekünk telefonon, SMS-ben, e-mailben vagy WhatsAppon.</p>
+      <p>Az asztalfoglalási és a szállásajánlat-kérő űrlapon megadott adatokat (név, telefonszám, e-mail-cím, dátum és időpont, létszám, megjegyzés) a Web3Forms űrlapszolgáltatás (üzemeltető: Web3Creative, India) e-mailben továbbítja nekünk. A weboldal maga nem tárolja a beírt adatokat. Ha a küldés nem sikerül, az űrlap egy kész üzenetet állít össze, amelyet Ön a saját eszközéről küldhet el nekünk telefonon, SMS-ben, e-mailben vagy WhatsAppon.</p>
       <ul>
         <li><b>Cél:</b> a foglalás vagy ajánlatkérés kezelése és visszaigazolása.</li>
         <li><b>Jogalap:</b> a szerződés megkötését megelőzően, az Ön kérésére tett lépések (GDPR 6. cikk (1) bekezdés b) pont).</li>
         <li><b>Megőrzési idő:</b> a foglalás lebonyolításához szükséges ideig; ha a foglalás alapján számla készül, a számviteli jogszabályokban előírt ideig.</li>
+        <li><b>Adatfeldolgozó:</b> Web3Forms (Web3Creative). A szolgáltató a beérkezett kéréseket a saját rendszerében legfeljebb három évig tárolhatja, és az adatokat az Európai Unión kívül is feldolgozhatja, az adatfeldolgozási megállapodásában (<a href="https://web3forms.com/dpa" target="_blank" rel="noopener">web3forms.com/dpa</a>) leírtak szerint.</li>
       </ul>
       <p>Ha az üzenetet WhatsAppon küldi el, az üzenetküldésre a WhatsApp saját adatkezelési feltételei is vonatkoznak.</p>
 
@@ -1681,7 +1682,7 @@ textarea.input{min-height:110px;resize:vertical}
       <p>A weboldal nem használ sütiket, látogatottságmérést vagy hirdetési követőkódot. A kiválasztott nyelvet, valamint azt, hogy az egyetemi kérdőív felugró ablakát már bezárta, a böngészője helyi tárolójában (localStorage) jegyezzük meg; ezek az adatok az Ön eszközén maradnak, és a böngésző beállításaiban bármikor törölhetők. A kérdőív a Google Űrlapok oldalán nyílik meg; az ott megadott válaszokra a kutatás saját tájékoztatója és a Google adatvédelmi szabályai vonatkoznak.</p>
 
       <h2>4. Tárhely és külső hivatkozások</h2>
-      <p>A weboldalt a Netlify, Inc. (101 2nd Street, San Francisco, CA 94105, USA) szolgálja ki. A szolgáltató a biztonságos működés érdekében technikai adatokat (például IP-cím, a látogatás időpontja, böngésző típusa) rögzíthet a szervernaplóban. Jogalap: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont).</p>
+      <p>A weboldalt a GitHub, Inc. (88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) GitHub Pages szolgáltatása szolgálja ki. A szolgáltató a biztonságos működés érdekében technikai adatokat (például IP-cím, a látogatás időpontja, böngésző típusa) rögzíthet a szervernaplóban. Jogalap: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont).</p>
       <p>Az Apple Térkép, a Google Térkép és a közösségi oldalak linkjei csak akkor nyílnak meg, ha Ön rájuk kattint; onnantól az adott szolgáltató adatkezelési feltételei érvényesek.</p>
 
       <h2>5. Az Ön jogai</h2>
@@ -1774,7 +1775,8 @@ textarea.input{min-height:110px;resize:vertical}
   </div>
 </dialog>
 
-<!-- Netlify Forms: hidden copies of the two booking forms. Netlify reads these at deploy time, stores every
+<!-- Netlify Forms (only used if SITE.booking endpoints are set back to "netlify" on Netlify hosting; the site now sends through Web3Forms).
+     Hidden copies of the two booking forms. Netlify reads these at deploy time, stores every
      request under Forms in the Netlify dashboard and e-mails it (Notifications > Form submission notifications).
      The visible forms send their data here from JavaScript (endpoint: "netlify" in SITE.booking). Keep the field names in sync. -->
 <form name="asztalfoglalas" data-netlify="true" netlify-honeypot="bot-field" hidden>
@@ -1825,10 +1827,14 @@ const SITE = {
   },
 
   booking: {
+    // WEB3FORMS — the booking requests arrive by e-mail through web3forms.com (free plan, 250 requests a month).
+    // ▶ IDE ILLESZD BE A WEB3FORMS ACCESS KEYT (a két idézőjel közé) ◀  web3forms.com → Create your Form → e-mail verification → the key arrives.
+    //   The key is not a secret: it only says which e-mail address gets the requests. Empty = guests send their request by WhatsApp/phone/e-mail.
+    web3formsKey: "",
     table: {
       externalUrl: "",              // external table-booking system, if you use one
       openExternalDirectly: false,  // true: every "Asztalfoglalás" button opens externalUrl
-      endpoint: "netlify",          // "netlify" = Netlify Forms (e-mail + Netlify dashboard); or a JSON POST URL (e.g. Formspree); empty = guest sends by WhatsApp/phone/SMS/e-mail
+      endpoint: "web3forms",        // "web3forms" = e-mail via web3forms.com (key above); "netlify" = Netlify Forms (only on Netlify hosting); or a JSON POST URL (e.g. Formspree); empty = guest sends by WhatsApp/phone/SMS/e-mail
       maxGuests: 20,
       duration: 120,                // minutes; length of the calendar entry made from a table request
       timeSlots: []                 // e.g. ["12:00","12:30","18:00","18:30"]; empty = free time input
@@ -1849,7 +1855,7 @@ const SITE = {
         embed: false,        // true: shows the booking engine inside the booking page; false: opens it in a new tab
         openDirectly: true   // true: every "Szállásfoglalás" button goes straight to SabeeApp
       },
-      endpoint: "netlify",          // same as the table booking endpoint
+      endpoint: "web3forms",        // same as the table booking endpoint
       openExternalDirectly: false,  // true: "Szállásfoglalás" opens the first external link
       external: [
         { label: { hu: "Online foglalás", de: "Online buchen", cs: "Online rezervace", en: "Book online" }, url: "" }
@@ -3948,16 +3954,34 @@ function netlifyBody(kind, payload, text) {
   Object.entries(fields).forEach(([k, v]) => body.append(k, v == null ? "" : String(v)));
   return body.toString();
 }
+/* Web3Forms: JSON POST to api.web3forms.com; the e-mail lists these fields, "message" is the full readable summary. */
+function web3formsBody(kind, payload, text) {
+  const subject = kind === "table"
+    ? `Asztalfoglalás: ${payload.name}, ${payload.date} ${payload.time}, ${payload.guests} fő`
+    : `Szállásajánlat-kérés: ${payload.name}, ${payload.arrival} – ${payload.departure}`;
+  return JSON.stringify({
+    access_key: SITE.booking.web3formsKey,
+    subject,
+    from_name: kind === "table" ? "Aurora weboldal – asztalfoglalás" : "Aurora weboldal – szállás",
+    replyto: payload.email || "",
+    name: payload.name, email: payload.email || "", phone: payload.phone || "", lang,
+    message: text
+  });
+}
 async function deliver(kind, payload, text, form, resultEl, submitBtn) {
-  const ep = kind === "table" ? SITE.booking.table.endpoint : SITE.booking.stay.endpoint;
+  let ep = kind === "table" ? SITE.booking.table.endpoint : SITE.booking.stay.endpoint;
+  if (ep === "web3forms" && !SITE.booking.web3formsKey) ep = "";   // no key yet: fall back to the guest-sent message
   let mode = "manual";
   if (ep) {
     const label = submitBtn.textContent; submitBtn.disabled = true; submitBtn.textContent = t("bk.sending");
     try {
       const r = ep === "netlify"
         ? await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: netlifyBody(kind, payload, text) })
+        : ep === "web3forms"
+        ? await fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: web3formsBody(kind, payload, text) })
         : await fetch(ep, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ type: kind, lang, ...payload, message: text }) });
       mode = r.ok ? "sent" : "fail";
+      if (mode === "sent" && ep === "web3forms") { try { const j = await r.json(); if (j && j.success === false) mode = "fail"; } catch (e) {} }
     } catch (e) { mode = "fail"; }
     submitBtn.disabled = false; submitBtn.textContent = label;
   }
